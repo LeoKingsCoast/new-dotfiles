@@ -1,0 +1,18 @@
+# Fonts
+font_family JetBrainsMono Nerd font
+italic_font auto
+bold_font auto
+bold_italic_font auto
+font_size 10.0
+
+# Theme
+background_opacity 0.95
+dynamic_background_opacity yes
+
+cursor_shape block
+
+
+# BEGIN_KITTY_THEME
+# Tokyo Night Storm
+include current-theme.conf
+# END_KITTY_THEME

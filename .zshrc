@@ -43,7 +43,7 @@ alias fzf="fzf --preview 'batcat --style=numbers --color=always {}"
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Function to make yazi exit on current directory. Found in https://yazi-rs.github.io/docs/quick-start
 function yy() {
@@ -194,7 +194,7 @@ prompt_purification_setup() {
 
     prompt_git_branch
     RPROMPT=''
-    PROMPT=$'%F{white}%~ $(prompt_git_info) $(git_prompt_status) \n%B%F{blue}>%f%b '
+    PROMPT=$'%F{green}[󰣭 %n]%F{white}%~ $(prompt_git_info) $(git_prompt_status) \n%B%F{blue}>%f%b '
 }
 
 prompt_purification_setup

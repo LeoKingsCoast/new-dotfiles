@@ -68,7 +68,7 @@ return {
             suffix = suffix .. string.char(math.random(65, 90))
           end
         end
-        return tostring(os.time()) .. "-" .. suffix
+        return suffix .. "-" .. os.date("%Y%m%d")
       end,
 
       -- Optional, customize how note file names are generated given the ID, target directory, and title.
@@ -100,12 +100,21 @@ return {
         -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
       end,
 
+      -- Optional, for templates (see below).
+      templates = {
+        folder = "assets/templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+        -- A map for custom variables, the key should be the variable and the value a function
+        substitutions = {},
+      },
+
         -- Specify how to handle attachments.
       attachments = {
         -- The default folder to place images in via `:ObsidianPasteImg`.
         -- If this is a relative path it will be interpreted as relative to the vault root.
         -- You can always override this per image by passing a full path to the command instead of just a filename.
-        img_folder = "assets/imgs",  -- This is the default
+        img_folder = "assets/img",  -- This is the default
 
         -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
         ---@return string

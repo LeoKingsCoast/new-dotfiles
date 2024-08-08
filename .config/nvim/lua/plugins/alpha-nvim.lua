@@ -56,6 +56,8 @@ return {
       dashboard.button("n", " [n]ew file", "<cmd>ene<CR>"),
       dashboard.button("ff", " [f]ind [f]ile", "<cmd>Telescope find_files<CR>"),
       dashboard.button("fg", " [f]ind [g]rep", "<cmd>Telescope live_grep<CR>"),
+      dashboard.button("oq", "󱅄 [o]bsidian [q]uick search", "<cmd>ObsidianQuickSwitch<CR>"),
+      dashboard.button("og", "󱅄 [o]bsidian [g]grep", "<cmd>ObsidianSearch<CR>"),
       dashboard.button("u", " [u]pdate plugins", "<cmd>Lazy sync<CR>"),
       dashboard.button("i", " [i]nstall language tools", "<cmd>Mason<CR>"),
       dashboard.button("q", "X [q]uit", "<cmd>qa<CR>"),

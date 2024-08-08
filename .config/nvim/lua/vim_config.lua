@@ -48,7 +48,7 @@ vim.keymap.set('n', '<leader>oo', "<cmd>ObsidianOpen<CR>")
 vim.keymap.set('n', '<leader>ob', "<cmd>ObsidianBacklinks<CR>")
 vim.keymap.set('n', '<leader>ol', "<cmd>ObsidianLinks<CR>")
 vim.keymap.set('n', '<leader>on', "<cmd>ObsidianNew<CR>")
-vim.keymap.set('n', '<leader>os', "<cmd>ObsidianSearch<CR>")
+vim.keymap.set('n', '<leader>og', "<cmd>ObsidianSearch<CR>")
 vim.keymap.set('n', '<leader>oq', "<cmd>ObsidianQuickSwitch<CR>")
 vim.keymap.set('n', '<leader>op', "<cmd>ObsidianPasteImg<CR>")
 

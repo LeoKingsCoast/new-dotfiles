@@ -1,4 +1,5 @@
 require("vim_config")
+require("my-snippets.markdown")
 require("config.lazy")
 
 -- Line number colors

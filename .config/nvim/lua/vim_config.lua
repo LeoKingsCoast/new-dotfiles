@@ -51,6 +51,12 @@ vim.keymap.set('n', '<leader>on', "<cmd>ObsidianNew<CR>")
 vim.keymap.set('n', '<leader>og', "<cmd>ObsidianSearch<CR>")
 vim.keymap.set('n', '<leader>oq', "<cmd>ObsidianQuickSwitch<CR>")
 vim.keymap.set('n', '<leader>op', "<cmd>ObsidianPasteImg<CR>")
+-- vim.keymap.set('n', '<leader>op', function ()
+--   -- cmd = cmd.format("<cmd>ObsidianPasteImg %s", os.time())
+--   local obsidian = require("obsidian")
+--   require("obsidian.commands.paste_img")(obsidian.get_client(), {fname="aaa"})
+--   -- return cmd
+-- end)
 
 -- Use <CR> to fold when in normal mode
 -- To see help about folds use `:help fold`

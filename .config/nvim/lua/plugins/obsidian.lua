@@ -8,6 +8,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   config = function()
+    local my_path_variable = require("obsidian.path")
     require("obsidian").setup({
       workspaces = {
         {
@@ -117,10 +118,11 @@ return {
         img_folder = "assets/img",  -- This is the default
 
         -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
+        confirm_img_paste = true,
         ---@return string
         img_name_func = function()
           -- Prefix image names with timestamp.
-          return string.format("%s-", os.time())
+          return string.format("%s-",os.time())
         end,
 
         -- A function that determines the text to insert in the note when pasting an image.

@@ -29,6 +29,7 @@ stow .
     - Through apt: `stlink-tools gcc-arm-none-eabi openocd`
 - `nvim`
 - `flameshot`: App for taking screenshots.
+- `yazi`: TUI file manager. (needs `ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick`)
 - `syncthing`: Program for syncing files with other devices.
 
 ### Language Learning

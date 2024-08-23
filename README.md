@@ -20,6 +20,8 @@ stow .
 
 ## Other packages to install
 
+PRIMEIRA COISA A TESTAR: `steam`
+
 ### General Programs
 
 - `tmux`

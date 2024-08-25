@@ -11,12 +11,33 @@ vim.g.mapleader = " "
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- undotree
+vim.o.undofile = true;
 
 -- Setting indentation
 vim.opt.smartindent = true
 
 -- Wrap lines that are too long
-vim.opt.wrap = true
+-- vim.opt.wrap = true
+-- vim.opt.linebreak = true
+-- vim.opt.breakindent = true
+-- vim.opt.textwidth = 80
+vim.opt.colorcolumn = "80"
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        -- vim.opt_local.textwidth = 79
+        -- vim.opt_local.columns=80
+    vim.opt_local.wrap = true
+    vim.opt.showbreak = ">> "  -- Optional: visually indicate wrapped lines
+    end,
+})
+vim.keymap.set('n', '<leader>sw', function()
+  vim.wo.wrap = true
+  vim.wo.linebreak = true
+  return '<Cmd>vertical rightbelow new | set winbar="" nonumber norelativenumber<CR><C-w>h<C-w>' .. (vim.v.count ~= 0 and vim.v.count or 100) .. '|'
+  end,
+{expr = true})
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -32,9 +53,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
-
-vim.opt.textwidth = 80
-vim.opt.colorcolumn = "80"
 
 vim.opt.conceallevel = 2
 

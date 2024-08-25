@@ -13,6 +13,7 @@ vim.opt.relativenumber = true
 
 -- undotree
 vim.o.undofile = true;
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undotree" })
 
 -- Setting indentation
 vim.opt.smartindent = true
@@ -32,12 +33,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.showbreak = ">> "  -- Optional: visually indicate wrapped lines
     end,
 })
-vim.keymap.set('n', '<leader>sw', function()
-  vim.wo.wrap = true
-  vim.wo.linebreak = true
-  return '<Cmd>vertical rightbelow new | set winbar="" nonumber norelativenumber<CR><C-w>h<C-w>' .. (vim.v.count ~= 0 and vim.v.count or 100) .. '|'
-  end,
-{expr = true})
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -55,6 +50,20 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.conceallevel = 2
+
+-- Keymaps --------------------------------
+
+vim.keymap.set("n", "J", "<nop>")
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set('n', '<leader>sw', function()
+  vim.wo.wrap = true
+  vim.wo.linebreak = true
+  return '<Cmd>vertical rightbelow new | set winbar="" nonumber norelativenumber<CR><C-w>h<C-w>' .. (vim.v.count ~= 0 and vim.v.count or 100) .. '|'
+  end,
+{expr = true})
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Go to file manager" })
 vim.keymap.set("v", "<C-c>", "\"+y")

@@ -34,6 +34,14 @@ PRIMEIRA COISA A TESTAR: `steam`
 - `yazi`: TUI file manager. (needs `ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick`)
 - `syncthing`: Program for syncing files with other devices.
 
+### LaTeX Support
+
+- To use LaTeX with neovim, install the following packages for integrating with `vimtex`:
+```bash
+sudo apt install texlive-full latexmk zathura # Ubuntu
+sudo pacman -S texlive-most texlive-lang latexmk zathura # Arch
+```
+
 ### Language Learning
 
 - `tesseract-ocr tesseract-ocr-jpn tesseract-ocr-script-jpan tesseract-ocr-deu`:

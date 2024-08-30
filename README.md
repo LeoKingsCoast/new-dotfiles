@@ -49,3 +49,14 @@ sudo pacman -S texlive-most texlive-lang latexmk zathura # Arch
 - `scrot`: App for taking screenshots.
 - `xclip`: Xorg application for using the clipboard.
 - ``
+
+## Aditional steps for configuration
+
+### I3
+
+- Add the `bumblebee-status` git repo inside `.config/i3/`
+```bash
+cd .config/i3
+git clone `<bumblebee repo url>`
+```
+

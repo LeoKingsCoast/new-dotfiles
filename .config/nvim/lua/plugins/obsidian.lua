@@ -134,8 +134,9 @@ return {
         confirm_img_paste = true,
         ---@return string
         img_name_func = function()
+          local file_name = vim.fn.expand('%:t:r');
           -- Prefix image names with timestamp.
-          return string.format("%s-",os.time())
+          return string.format("%s-%s", file_name, os.time())
         end,
 
         -- A function that determines the text to insert in the note when pasting an image.

@@ -23,6 +23,12 @@ return{
     "eldritch-theme/eldritch.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      on_highlights = function(highlights)
+        highlights["@markup.strong"] = { fg = "#f265b5", bold = true }
+        highlights["@markup.italic"] = { fg = "#37f499", bold = true }
+        highlights["@markup.strikethrough"] = { fg = "#323449", bold = true }
+      end
+    },
   }
 }

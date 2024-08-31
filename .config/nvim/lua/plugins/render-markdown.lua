@@ -85,7 +85,7 @@ return{
         --  normal:   adds highlight group to code blocks & inline code, adds padding to code blocks
         --  language: adds language icon to sign column if enabled and icon + name above code blocks
         --  full:     normal + language
-        style = 'language',
+        style = 'full',
         -- Determines where language icon is rendered:
         --  right: right side of code block
         --  left:  left side of code block

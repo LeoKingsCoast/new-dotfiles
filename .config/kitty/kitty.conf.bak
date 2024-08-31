@@ -6,13 +6,15 @@ bold_italic_font auto
 font_size 10.0
 
 # Theme
-background_opacity 0.95
+background_opacity 0.9
 dynamic_background_opacity yes
 
 cursor_shape block
 
+# Start tmux session or attach to existing one
+# shell zsh --login -c "tmux attach || tmux"
 
 # BEGIN_KITTY_THEME
-# Tokyo Night Storm
+# Modus Vivendi
 include current-theme.conf
 # END_KITTY_THEME

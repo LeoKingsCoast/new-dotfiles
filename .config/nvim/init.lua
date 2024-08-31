@@ -2,6 +2,9 @@ require("vim_config")
 require("my-snippets.markdown")
 require("config.lazy")
 
+-- theme
+vim.cmd.colorscheme "eldritch"
+
 -- Line number colors
 vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})

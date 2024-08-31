@@ -10,9 +10,6 @@ return{
   {
     "miikanissi/modus-themes.nvim",
     priority = 1000,
-    config = function ()
-      vim.cmd.colorscheme "modus_vivendi"
-    end
   },
   {
     "folke/tokyonight.nvim",
@@ -21,5 +18,11 @@ return{
     opts = {},
     config = function()
     end
+  },
+  {
+    "eldritch-theme/eldritch.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   }
 }

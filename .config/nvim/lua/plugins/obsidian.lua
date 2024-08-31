@@ -8,7 +8,6 @@ return {
     "nvim-lua/plenary.nvim",
   },
   config = function()
-    local my_path_variable = require("obsidian.path")
     require("obsidian").setup({
       workspaces = {
         {
@@ -20,6 +19,8 @@ return {
         --   path = "~/vaults/work",
         -- },
       },
+
+      ui = { enable = false },
 
       completion = {
         -- Set to false to disable completion.

@@ -60,3 +60,20 @@ cd .config/i3
 git clone `<bumblebee repo url>`
 ```
 
+### Imagens no Neovim
+
+Qualquer dúvida consultar o [repo oficial](https://github.com/3rd/image.nvim).
+
+Para fazer funcionar no Mint, foi necessário instalar o `libmagickwand-dev`. 
+```bash
+sudo apt install libmagickwand-dev
+```
+
+Antes de ver isso, acabei fazendo as seguintes instalações, pode ser que não seja necessário:
+```bash
+sudo apt-get install luajit
+sudo apt-get install luarocks
+luarocks --local --lua-version=5.1 install magick # Acabei rodando esses dois, e parecem ter feito coisas diferentes, não sei se algum deles foi necessário
+luarocks install magick
+```
+

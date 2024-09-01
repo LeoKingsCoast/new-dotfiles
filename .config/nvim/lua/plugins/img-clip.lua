@@ -25,12 +25,13 @@ return {
       -- To see your current working directory run `:pwd`
       -- So if this is set to false, the image will be created in that cwd
       -- In my case, I want images to be where the file is, so I set it to true
-      relative_to_current_file = true, ---@type boolean
+      relative_to_current_file = false, ---@type boolean
 
       -- I want to save the images in a directory named after the current file,
       -- but I want the name of the dir to end with `-img`
       dir_path = function()
-        return vim.fn.expand("%:t:r") .. "-img"
+        print(vim.fn.expand("%:t:r") .. "-img")
+        return "assets/img/" .. vim.fn.expand("%:t:r") .. "-img"
       end,
 
       -- If you want to get prompted for the filename when pasting an image

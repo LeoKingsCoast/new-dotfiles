@@ -30,8 +30,7 @@ return {
       -- I want to save the images in a directory named after the current file,
       -- but I want the name of the dir to end with `-img`
       dir_path = function()
-        print(vim.fn.expand("%:t:r") .. "-img")
-        return "assets/img/" .. vim.fn.expand("%:t:r") .. "-img"
+        return "assets/img/" .. vim.fn.expand("%:t:r"):gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower() .. "-img"
       end,
 
       -- If you want to get prompted for the filename when pasting an image

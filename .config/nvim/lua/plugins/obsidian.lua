@@ -20,13 +20,15 @@ return {
         -- },
       },
 
+      notes_subdir = "inbox",
+
       ui = { enable = false },
 
       completion = {
         -- Set to false to disable completion.
         nvim_cmp = true,
         -- Trigger completion at 2 chars.
-        min_chars = 2,
+        min_chars = 1,
       },
 
       daily_notes = {
@@ -74,15 +76,18 @@ return {
         -- In this case a note with the title 'My new note' will be given an ID that looks
         -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
         local suffix = ""
-        if title ~= nil then
-          -- If title is given, transform it into valid file name.
-          suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-        else
-          -- If title is nil, just add 4 random uppercase letters to the suffix.
-          for _ = 1, 4 do
-            suffix = suffix .. string.char(math.random(65, 90))
-          end
+        for _ = 1, 4 do
+          suffix = suffix .. string.char(math.random(65, 90))
         end
+        -- if title ~= nil then
+        --   -- If title is given, transform it into valid file name.
+        --   suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        -- else
+        --   -- If title is nil, just add 4 random uppercase letters to the suffix.
+        --   for _ = 1, 4 do
+        --     suffix = suffix .. string.char(math.random(65, 90))
+        --   end
+        -- end
         return suffix .. "-" .. os.date("%Y%m%d")
       end,
 
@@ -91,7 +96,7 @@ return {
       ---@return string|obsidian.Path The full path to the new note.
       note_path_func = function(spec)
         -- This is equivalent to the default behavior.
-        local path = spec.dir / tostring(spec.id)
+        local path = spec.dir / (tostring(spec.title) .. "__" .. tostring(spec.id))
         return path:with_suffix(".md")
       end,
 

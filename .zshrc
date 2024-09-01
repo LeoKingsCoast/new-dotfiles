@@ -35,6 +35,10 @@ alias ll='ls -Alh'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fzf="fzf --preview 'batcat --style=numbers --color=always {}"
+alias oo='cd ~/Documents/obsidian'
+alias dtf='cd ~/dotfiles'
+alias screenhome='xrandr --output HDMI-1 --auto --right-of eDP-1'
+alias screenhome='xrandr --output HDMI-1 --off'
 
 # Prompt style
 # PROMPT='%B%F{cyan}󰣇 %n %B%F{015}%~ ${vcs_info_msg_0_} %B%F{006}%b%F{015} '

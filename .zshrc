@@ -20,12 +20,6 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr ' %F{yellow}!'
 zstyle ':vcs_info:*' enable git
 
-# Allow autocompletion selection
-autoload -Uz compinit
-setopt PROMPT_SUBST
-compinit
-zstyle ':completion*' menu select
-
 # Aliases
 alias cp='cp -i'
 alias rm='rm -i'
@@ -41,12 +35,6 @@ alias screenleave='xrandr --output HDMI-1 --off'
 
 # Prompt style
 # PROMPT='%B%F{cyan}󰣇 %n %B%F{015}%~ ${vcs_info_msg_0_} %B%F{006}%b%F{015} '
-
-# Plugins
-source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Function to make yazi exit on current directory. Found in https://yazi-rs.github.io/docs/quick-start
 function yy() {
@@ -207,3 +195,19 @@ prompt_purification_setup() {
 }
 
 prompt_purification_setup
+
+# Plugins
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-completions/zsh-completions.plugin.zsh
+
+# Allow autocompletion selection
+autoload -Uz compinit
+setopt PROMPT_SUBST
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
+

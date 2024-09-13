@@ -12,7 +12,7 @@ return {
       workspaces = {
         {
           name = "MyVault",
-          path = "~/Documents/obsidian",
+          path = "~/sync-folder/obsidian",
         },
         -- {
         --   name = "work",

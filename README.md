@@ -77,3 +77,13 @@ luarocks --local --lua-version=5.1 install magick # Acabei rodando esses dois, e
 luarocks install magick
 ```
 
+#### No Arch
+
+Instalei o `imagemagick` e o `luarocks` juntamente com o `magick`, pelo comando:
+```bash
+sudo pacman -S imagemagick lua51
+luarocks --local --lua-version=5.1 install magick
+```
+
+Não funcionou de primeira, resolvi executando no nvim `:Lazy build luarocks.nvim`
+

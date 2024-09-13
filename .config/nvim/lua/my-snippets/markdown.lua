@@ -48,7 +48,9 @@ ls.add_snippets("markdown", {
   s("math",fmt(
     [[
     $$
+    \begin{{aligned}}
     {}
+    \end{{aligned}}
     $$
     ]], {i(1)}
   ))

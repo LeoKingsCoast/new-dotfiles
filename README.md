@@ -60,6 +60,18 @@ cd .config/i3
 git clone `<bumblebee repo url>`
 ```
 
+### AwesomeWM
+
+- Go to the awesome directory and install additional repos:
+```bash
+git clone https://github.com/lcpz/lain
+git clone https://github.com/streetturtle/awesome-wm-widgets
+etc
+```
+
+- Dependencies:
+    - Audio widget: `alsa-utils`, talvez `alsa-plugins`
+
 ### Imagens no Neovim
 
 Qualquer dúvida consultar o [repo oficial](https://github.com/3rd/image.nvim).

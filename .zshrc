@@ -28,7 +28,7 @@ alias ll='ls -Alh'
 # alias ls="lsd --group-dirs first"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias fzf="fzf --preview 'batcat --style=numbers --color=always {}"
+alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 alias dtf='cd ~/dotfiles'
 alias screenhome='xrandr --output HDMI-1 --auto --right-of eDP-1'
 alias screenleave='xrandr --output HDMI-1 --off'
@@ -209,5 +209,5 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 

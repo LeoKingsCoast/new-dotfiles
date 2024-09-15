@@ -13,7 +13,6 @@ local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
-local pacman_widget = require("awesome-wm-widgets.pacman-widget.pacman")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -259,6 +258,7 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.horizontal,
       mykeyboardlayout,
       tbox_separator,
+      -- wibox.widget.textbox ( "󰣇 " ),
       fs_widget({ mounts = { '/', '/home' } }),
       tbox_separator,
       cpu.widget,
@@ -272,8 +272,6 @@ awful.screen.connect_for_each_screen(function(s)
       }),
       tbox_separator,
       volume_widget({ card = 0 }),
-      tbox_separator,
-      pacman_widget(),
       tbox_separator,
       wibox.widget.systray(),
       tbox_separator,

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+noteFileName=$HOME/Documents/obsidian/drafts/
+
+# if [ ! -f $noteFileName ]; then
+#   nvim -c "ObsidianToday" \
+#     -c "q"
+# fi
+
+nvim $noteFileName
+

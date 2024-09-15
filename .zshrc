@@ -3,6 +3,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Setting up path
+export PATH=$PATH:$HOME/appimages
+export PATH=$PATH:$HOME/dev/scripts
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
@@ -58,7 +62,7 @@ function icu ()
 
 function oo ()
 {
-  cd ~/Documents/obsidian
+  cd ~/sync-folder/obsidian
   nvim "Main Page.md"
 }
 

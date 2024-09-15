@@ -2,6 +2,7 @@
 
 return {
   "HakonHarnes/img-clip.nvim",
+  enabled = true,
   event = "VeryLazy",
   opts = {
     -- add options here

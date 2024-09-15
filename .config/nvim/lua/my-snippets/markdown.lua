@@ -31,21 +31,49 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
-  s("frac", {
-    t("\\frac{"), i(1), t("}{"), i(0), t("}")
-  })
+  s("python", fmt(
+    [[
+    ```python
+    {}
+    ```
+    ]], {i(1)}
+  ))
+})
+
+-- ls.add_snippets("markdown", {
+--   s("frac", {
+--     t("\\frac{"), i(1), t("}{"), i(0), t("}")
+--   })
+-- })
+
+ls.add_snippets("markdown", {
+  s("frac",fmt(
+    [[
+    \frac{{{}}}{{{}}}{}
+    ]], {i(1), i(2), i(0)}
+  ))
 })
 
 ls.add_snippets("markdown", {
   s("equation",fmt(
     [[
-    ${}$
+    ${} $
     ]], {i(1)}
   ))
 })
 
 ls.add_snippets("markdown", {
   s("math",fmt(
+    [[
+    $$
+    {}
+    $$
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("math-multiline",fmt(
     [[
     $$
     \begin{{aligned}}
@@ -71,3 +99,32 @@ ls.add_snippets("markdown", {
     ]], {i(1), i(0)}
   ))
 })
+
+ls.add_snippets("markdown", {
+  s("vector",fmt(
+    [[
+    \vec{{{}}}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("chem",fmt(
+    [[
+    $\ce{{{}}}$
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("chem-multi",fmt(
+    [[
+    $$
+    \begin{{aligned}}
+    \ce{{{}}}
+    \end{{aligned}}
+    $$
+    ]], {i(1)}
+  ))
+})
+

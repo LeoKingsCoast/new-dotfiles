@@ -44,6 +44,7 @@ return {
   },
   {
     "3rd/image.nvim",
+    enabled = true,
     dependencies = { "luarocks.nvim" },
     config = function()
       require("image").setup({

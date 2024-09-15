@@ -11,6 +11,9 @@ local wibox = require("wibox")
 local lain = require("lain")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
+local pacman_widget = require("awesome-wm-widgets.pacman-widget.pacman")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -125,7 +128,7 @@ local cpu  = lain.widget.cpu {
 -- RAM Widget
 local ram = lain.widget.mem {
   settings = function ()
-    widget:set_markup("RAM" .. mem_now.perc .. "%")
+    widget:set_markup("RAM: " .. mem_now.perc .. "%")
   end
 }
 
@@ -256,11 +259,22 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.horizontal,
       mykeyboardlayout,
       tbox_separator,
+      fs_widget({ mounts = { '/', '/home' } }),
+      tbox_separator,
       cpu.widget,
       tbox_separator,
       ram.widget,
       tbox_separator,
+      battery_widget({
+        show_current_level = true,
+        warning_msg_title = "You have no power here",
+        warning_msg_icon = "~/dotfiles/.config/awesome/awesome-wm-widgets/battery-widget/you-have-no-power-here.jpg"
+      }),
+      tbox_separator,
       volume_widget({ card = 0 }),
+      tbox_separator,
+      pacman_widget(),
+      tbox_separator,
       wibox.widget.systray(),
       tbox_separator,
       mytextclock,
@@ -326,6 +340,10 @@ globalkeys = gears.table.join(
   --     {description = "go back", group = "client"}),
 
   -- ========= CUSTOM ============
+
+  -- Print
+  awful.key({}, "Print", function () awful.util.spawn("flameshot gui") end,
+    {description = "Print with Flameshot", group = "client"}),
 
   -- Movendo janelas na tela
   awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.global_bydirection("down")    end,
@@ -440,10 +458,10 @@ globalkeys = gears.table.join(
     {description = "increase the number of columns", group = "layout"}),
   awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
     {description = "decrease the number of columns", group = "layout"}),
-  awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-    {description = "select next", group = "layout"}),
-  awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-    {description = "select previous", group = "layout"}),
+  -- awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+  --   {description = "select next", group = "layout"}),
+  -- awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+  --   {description = "select previous", group = "layout"}),
 
   awful.key({ modkey, "Control" }, "n",
     function ()
@@ -770,8 +788,11 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- Autostart Applications
--- awful.spawn.with_shell("nitrogen --random")
-
--- Gaps
+-- Gap
 beautiful.useless_gap = 5
+
+-- Autostart Applications
+awful.spawn.with_shell("nm-applet")
+awful.spawn.with_shell("fcitx -d")
+awful.spawn.with_shell("nitrogen --restore")
+

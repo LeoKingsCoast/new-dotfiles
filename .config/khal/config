@@ -1,0 +1,42 @@
+[calendars]
+
+[[faculdade]]
+path = /home/leore/.local/share/khal/calendars/faculdade
+type = calendar
+color = dark cyan
+priority = 19
+
+[[events]]
+path = /home/leore/.local/share/khal/calendars/events
+type = calendar
+color = dark green
+priority = 18
+
+[[holidays]]
+path = /home/leore/.local/share/khal/calendars/events
+type = calendar
+color = dark red
+priority = 17
+
+[[birthdays]]
+path = /home/leore/.local/share/khal/calendars/birthdays
+type = birthdays
+color = yellow
+priority = 20
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+firstweekday = 6
+
+[default]
+default_calendar = faculdade
+highlight_event_days = True
+timedelta = 14d
+
+[view]
+blank_line_before_day = True
+frame = color

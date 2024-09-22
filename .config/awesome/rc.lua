@@ -476,7 +476,7 @@ globalkeys = gears.table.join(
   -- customized
   -- Prompt
   awful.key({ modkey },            "r",     function () 
-    awful.util.spawn("dmenu_run") end,
+    awful.util.spawn("rofi -show drun") end,
     {description = "launch dmenu", group = "launcher"}),
 
   awful.key({ modkey, "Control" }, "x",
@@ -791,6 +791,7 @@ beautiful.useless_gap = 5
 
 -- Autostart Applications
 awful.spawn.with_shell("nm-applet")
+awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("fcitx -d")
 awful.spawn.with_shell("nitrogen --restore")
 

@@ -13,6 +13,186 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s("alpha", {
+    t('\\alpha')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("beta", {
+    t('\\beta')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("gamma", {
+    t('\\gamma')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("Gamma", {
+    t('\\Gamma')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("delta", {
+    t('\\delta')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("Delta", {
+    t('\\Delta')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("eta", {
+    t('\\eta')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("epsilon", {
+    t('\\epsilon')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("varepsilon", {
+    t('\\varepsilon')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("mu", {
+    t('\\mu')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("sigma", {
+    t('\\sigma')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("Sigma", {
+    t('\\Sigma')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("pi", {
+    t('\\pi')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("rho", {
+    t('\\rho')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("theta", {
+    t('\\theta')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("zeta", {
+    t('\\zeta')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("kappa", {
+    t('\\kappa')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("lambda", {
+    t('\\lambda')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("Lambda", {
+    t('\\Lambda')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("phi", {
+    t('\\phi')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("omega", {
+    t('\\omega')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("Omega", {
+    t('\\Omega')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("tau", {
+    t('\\tau')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("upsilon", {
+    t('\\upsilon')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("psi", {
+    t('\\psi')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("chi", {
+    t('\\chi')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("nabla", {
+    t('\\nabla')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("partial", {
+    t('\\partial')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("cdot", {
+    t('\\cdot')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("times", {
+    t('\\times')
+  })
+})
+
+ls.add_snippets("markdown", {
   s("bash", {
     t('```bash'),
     t({ "" , "" }), i(1),
@@ -107,6 +287,23 @@ ls.add_snippets("markdown", {
     ]], {i(1)}
   ))
 })
+
+ls.add_snippets("markdown", {
+  s("text",fmt(
+    [[
+    \text{{{}}}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("sqrt",fmt(
+    [[
+    \sqrt{{{}}}
+    ]], {i(1)}
+  ))
+})
+
 
 ls.add_snippets("markdown", {
   s("chem",fmt(

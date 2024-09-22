@@ -15,6 +15,36 @@ HISTFILE=~/.zsh_history
 # print a space between prompts
 precmd() { print "" }
 
+# vi mode
+bindkey -v
+bindkey "^H" backward-delete-char # <-- This and the next line are necessary to avoid backslash blocking bug
+bindkey "^?" backward-delete-char
+export KEYTIMEOUT=1
+
+# Switch to block cursor in normal mode
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]] || [[ $KEYMAP == viopp ]]; then
+    printf '\e[2 q'   # block cursor
+  else
+    printf '\e[6 q'   # beam cursor
+  fi
+}
+
+# Switch to beam cursor when Zsh starts
+function zle-line-init {
+  printf '\e[6 q'  # beam cursor
+}
+
+# Ensure the cursor is a beam when exiting Zsh
+function zle-line-finish {
+  printf '\e[6 q'  # beam cursor
+}
+
+# Hooks for zle (Zsh Line Editor) to detect keymap changes
+zle -N zle-keymap-select
+zle -N zle-line-init
+zle -N zle-line-finish
+
 # prepare variable for git version control
 autoload -Uz vcs_info
 precmd() { vcs_info }

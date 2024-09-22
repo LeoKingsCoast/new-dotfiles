@@ -1,0 +1,65 @@
+#!/bin/bash 
+
+# CONSTANTS
+deck_name="Linguas::Alemão::German Words"
+card_type_name="German audio deck by Kiyoon"
+anki_server="http://localhost:8765/"
+
+german_word=$(xclip -selection clipboard -o | tr " " "\n" | dmenu -p "German word: ")
+german_word_escaped=$(printf '%s\n' "$german_word" | sed 's/"/\\"/g')
+# if either of them is empty, exit 
+if [ -z "$german_word_escaped" ]; then
+    exit 0
+fi
+
+german_plural=$(xclip -selection clipboard -o | tr " " "\n" | dmenu -p "Plural: ")
+german_plural_escaped=$(printf '%s\n' "$german_plural" | sed 's/"/\\"/g')
+# if either of them is empty, exit 
+if [ -z "$german_plural_escaped" ]; then
+    exit 0
+fi
+
+german_gender=$(echo "m n f" | tr " " "\n" | dmenu -p "German gender: ")
+german_gender_escaped=$(printf '%s\n' "$german_gender" | sed 's/"/\\"/g')
+# if either of them is empty, exit 
+if [ -z "$german_gender" ]; then
+    exit 0
+fi
+
+german_sentence=$(xclip -selection clipboard -o | dmenu -p "Sentence: ")
+german_sentence_escaped=$(printf '%s\n' "$german_sentence" | sed 's/"/\\"/g')
+# if either of them is empty, exit 
+if [ -z "$german_sentence_escaped" ]; then
+    exit 0
+fi
+
+translation_suggestion=$(dict -d fd-deu-por $german_word | awk '{ if (NR == 6) {print} }' | sed 's/  //')
+portuguese=$(echo "$translation_suggestion" | dmenu -p "Portuguese meaning: ")
+portuguese_escaped=$(printf '%s\n' "$portuguese" | sed 's/"/\\"/g')
+# if either of them is empty, exit 
+if [ -z "$portuguese_escaped" ]; then
+    exit 0
+fi
+
+
+curl $anki_server -X POST -H 'Content-Type: application/json' \
+     -d '{
+         "action": "addNote",
+         "version": 6,
+         "params": {
+             "note": {
+                 "deckName": "'"$deck_name"'",
+                 "modelName": "'"$card_type_name"'",
+                 "fields": {
+                     "German word": "'"$german_word_escaped"'",
+                     "German plural": "'"$german_plural_escaped"'",
+                     "German gender": "'"$german_gender_escaped"'",
+                     "German sample sentence": "'"$german_sentence_escaped"'",
+                     "Portuguese meaning": "'"$portuguese_escaped"'"
+                 },
+                 "options": {
+                     "allowDuplicate": false
+                 }
+             }
+         }
+     }'

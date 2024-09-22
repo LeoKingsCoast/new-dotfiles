@@ -1,4 +1,5 @@
 .config/i3/bumblebee-status
+.config/i3blocks/scripts
 *.log
 .config/awesome/awesome-wm-widgets
 .config/awesome/lain

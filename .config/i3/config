@@ -255,7 +255,8 @@ exec --no-startup-id nitrogen --head=0 --set-zoom-fill --random ~/Pictures/wallp
 bindsym Print exec "flameshot gui"
 
 bindsym --release $mod+c exec "/home/leore/dev/scripts/jpn-ocr" 
-bindsym --release $mod+v exec "/home/leore/dev/scripts/deu-ocr && /home/leore/dev/scripts/ankiadd-deu"
+bindsym --release $mod+v exec "/home/leore/dev/scripts/deu-ocr"
+bindsym --release $mod+g exec "/home/leore/dev/scripts/ankiadd-deu"
 bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
 
 assign [class="obsidian"] $ws3

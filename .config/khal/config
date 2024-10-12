@@ -13,7 +13,7 @@ color = dark green
 priority = 18
 
 [[holidays]]
-path = /home/leore/.local/share/khal/calendars/events
+path = /home/leore/.local/share/khal/calendars/holidays
 type = calendar
 color = dark red
 priority = 17

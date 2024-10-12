@@ -39,7 +39,7 @@ PRIMEIRA COISA A TESTAR: `steam`
 - To use LaTeX with neovim, install the following packages for integrating with `vimtex`:
 ```bash
 sudo apt install texlive-full latexmk zathura # Ubuntu
-sudo pacman -S texlive-most texlive-lang latexmk zathura # Arch
+sudo pacman -S texlive-most texlive-lang texlive-binextra zathura biber # Arch
 ```
 
 ### Language Learning

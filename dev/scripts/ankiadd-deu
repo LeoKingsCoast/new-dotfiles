@@ -5,6 +5,13 @@ deck_name="Linguas::Alemão::German Words"
 card_type_name="German audio deck by Kiyoon"
 anki_server="http://localhost:8765/"
 
+anki_status=$(curl -sSf "$anki_server")
+
+if [ -z "$anki_status" ]; then
+  notify-send -u low "Error" "Could not connect to Anki server."
+  exit 1
+fi
+
 german_word=$(xclip -selection clipboard -o | tr " " "\n" | dmenu -p "German word: ")
 german_word_escaped=$(printf '%s\n' "$german_word" | sed 's/"/\\"/g')
 # if either of them is empty, exit 
@@ -19,7 +26,7 @@ if [ -z "$german_plural_escaped" ]; then
     exit 0
 fi
 
-german_gender=$(echo "m n f" | tr " " "\n" | dmenu -p "German gender: ")
+german_gender=$(echo "m n f p" | tr " " "\n" | dmenu -p "German gender: ")
 german_gender_escaped=$(printf '%s\n' "$german_gender" | sed 's/"/\\"/g')
 # if either of them is empty, exit 
 if [ -z "$german_gender" ]; then
@@ -55,7 +62,7 @@ curl $anki_server -X POST -H 'Content-Type: application/json' \
                      "German plural": "'"$german_plural_escaped"'",
                      "German gender": "'"$german_gender_escaped"'",
                      "German sample sentence": "'"$german_sentence_escaped"'",
-                     "Portuguese meaning": "'"$portuguese_escaped"'"
+                     "Meaning": "'"$portuguese_escaped"'"
                  },
                  "options": {
                      "allowDuplicate": false

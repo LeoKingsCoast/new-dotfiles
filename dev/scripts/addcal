@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+read -p "What is the description of the event? " description
+read -p "What is the date (YYYY-MM-DD)? " date
+
+calendar=$(khal printcalendars | fzf)
+
+echo "$calendar"
+
+khal new -a "$calendar" "$date" "$description"

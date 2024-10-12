@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+read -p "Describe the task: " description
+read -p "Due date (YYYY-MM-DD): " dueDate
+read -p "Priority (L,M,H): " priority
+# read -p "Tags: " tags
+# read -p "Projects: " projects
+
+task add due:"$dueDate"+24h priority:"$priority" "$description"
+
+

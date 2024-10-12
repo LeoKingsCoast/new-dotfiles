@@ -193,6 +193,18 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s("approx", {
+    t('\\approx')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("Rightarrow", {
+    t('\\Rightarrow')
+  })
+})
+
+ls.add_snippets("markdown", {
   s("bash", {
     t('```bash'),
     t({ "" , "" }), i(1),

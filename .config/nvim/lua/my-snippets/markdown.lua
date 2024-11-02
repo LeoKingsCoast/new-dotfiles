@@ -199,6 +199,12 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s("infinity", {
+    t('\\infty')
+  })
+})
+
+ls.add_snippets("markdown", {
   s("Rightarrow", {
     t('\\Rightarrow')
   })
@@ -316,6 +322,29 @@ ls.add_snippets("markdown", {
   ))
 })
 
+ls.add_snippets("markdown", {
+  s("derivative",fmt(
+    [[
+    \frac{{d{}}}{{d{}}}
+    ]], {i(1), i(0)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("partialder",fmt(
+    [[
+    \frac{{\partial{}}}{{\partial{}}}
+    ]], {i(1), i(0)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("integral",fmt(
+    [[
+    \int_{{{}}}^{{{}}} {}
+    ]], {i(1), i(2), i(0)}
+  ))
+})
 
 ls.add_snippets("markdown", {
   s("chem",fmt(

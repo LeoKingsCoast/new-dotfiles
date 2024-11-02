@@ -42,6 +42,11 @@ sudo apt install texlive-full latexmk zathura # Ubuntu
 sudo pacman -S texlive-most texlive-lang texlive-binextra zathura biber # Arch
 ```
 
+- Others for arch:
+```bash
+sudo pacman -S extra/texlive-latex extra/texlive-latexextra extra/texlive-plaingeneric extra/texlive-fontsrecommended extra/texlive-fontsextra
+```
+
 ### Language Learning
 
 - `tesseract-ocr tesseract-ocr-jpn tesseract-ocr-script-jpan tesseract-ocr-deu`:

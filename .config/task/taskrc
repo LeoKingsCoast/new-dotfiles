@@ -29,7 +29,7 @@ search.case.sensitive=no
 
 urgency.user.tag.next.coefficient           = 15.0 # +next tag
 urgency.due.coefficient                     = 12.0 # overdue or near due date
-urgency.blocking.coefficient                =  8.0 # blocking other tasks
+urgency.blocking.coefficient                =  4.0 # blocking other tasks // original: 8
 urgency.uda.priority.H.coefficient          =  6.0 # high Priority
 urgency.uda.priority.M.coefficient          =  3.9 # medium Priority
 urgency.uda.priority.L.coefficient          =  1.8 # low Priority

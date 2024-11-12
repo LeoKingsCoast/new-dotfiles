@@ -47,8 +47,8 @@ return{
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
           ["<Tab>"] = cmp.mapping(function(fallback)
-            if luasnip.jumpable() then
-              luasnip.jump()
+            if luasnip.jumpable(1) then
+              luasnip.jump(1)
             else
               fallback()
             end

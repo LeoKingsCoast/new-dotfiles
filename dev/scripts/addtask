@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-read -p "Describe the task: " description
+[ $# -eq 0 ] && read -p "Describe the task: " description || description="$*"
 read -p "Due date (YYYY-MM-DD): " dueDate
 read -p "Priority (L,M,H): " priority
 # read -p "Tags: " tags
 # read -p "Projects: " projects
 project=$(task rc.list.all.projects=1 _projects | fzf)
-# task rc.list.all.projects=1 _projects
 
 task add due:"$dueDate"+24h priority:"$priority" project:"$project" "$description"
-
 

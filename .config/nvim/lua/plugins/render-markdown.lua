@@ -5,6 +5,14 @@ return{
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  init = function()
+    vim.cmd(string.format([[highlight Headline1Bg guifg=%s guibg=%s]], '#212337', '#a48cf2'));
+    vim.cmd(string.format([[highlight Headline2Bg guifg=%s guibg=%s]], '#212337', '#04d1f9'));
+    vim.cmd(string.format([[highlight Headline3Bg guifg=%s guibg=%s]], '#212337', '#37f499'));
+    vim.cmd(string.format([[highlight Headline4Bg guifg=%s guibg=%s]], '#212337', '#f265b5'));
+    vim.cmd(string.format([[highlight Headline5Bg guifg=%s guibg=%s]], '#212337', '#f16c75'));
+    vim.cmd(string.format([[highlight Headline6Bg guifg=%s guibg=%s]], '#212337', '#f1fc79'));
+  end,
   config = function()
     require('render-markdown').setup({
       heading = {
@@ -46,12 +54,12 @@ return{
         -- The 'level' is used to index into the array using a clamp
         -- Highlight for the heading icon and extends through the entire line
         backgrounds = {
-          'RenderMarkdownH1Bg',
-          'RenderMarkdownH2Bg',
-          'RenderMarkdownH3Bg',
-          'RenderMarkdownH4Bg',
-          'RenderMarkdownH5Bg',
-          'RenderMarkdownH6Bg',
+          'Headline1Bg',
+          'Headline2Bg',
+          'Headline3Bg',
+          'Headline4Bg',
+          'Headline5Bg',
+          'Headline6Bg',
         },
         -- The 'level' is used to index into the array using a clamp
         -- Highlight for the heading and sign icons
@@ -174,7 +182,7 @@ return{
         --   'rendered':  Replaces the 'raw' value when rendering
         --   'highlight': Highlight for the 'rendered' icon
         custom = {
-          todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownTodo' },
+          todo = { raw = '[/]', rendered = ' ', highlight = 'RenderMarkdownChecked' },
         },
       },
       quote = {
@@ -236,6 +244,7 @@ return{
       --   'highlight': Highlight for the 'rendered' text and quote markers
       callout = {
         note = { raw = '[!NOTE]', rendered = '󰋽 Note', highlight = 'RenderMarkdownInfo' },
+        seealso = { raw = '[!SEEALSO]', rendered = '󰋽 See Also', highlight = 'RenderMarkdownInfo' },
         faq = { raw = '[!FAQ]', rendered = '󰌶 FAQ', highlight = 'RenderMarkdownSuccess' },
         tip = { raw = '[!TIP]', rendered = '󰌶 Tip', highlight = 'RenderMarkdownSuccess' },
         important = { raw = '[!IMPORTANT]', rendered = '󰅾 Important', highlight = 'RenderMarkdownHint' },

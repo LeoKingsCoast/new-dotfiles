@@ -36,6 +36,8 @@ return{
         highlights["@markup.italic"] = { fg = "#37f499", bold = true }
         highlights["@markup.strikethrough"] = { fg = "#323449", bold = true }
         highlights["RenderMarkdownInfo"] = { fg = "#4269f5", bold = true }
+        highlights["RenderMarkdownQuestion"] = { fg = "#6eaf44", bold = true }
+        highlights["RenderMarkdownHint"] = { fg = "#37f499", bold = true }
       end
     },
   }

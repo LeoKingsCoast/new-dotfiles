@@ -49,9 +49,27 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s(">hint", fmt(
+    [[
+    > [!HINT]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s(">important", fmt(
     [[
     > [!IMPORTANT]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">key_point", fmt(
+    [[
+    > [!IMPORTANT] Key Point
     > {}
     ]], {i(1)}
   ))
@@ -76,9 +94,36 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s(">attention", fmt(
+    [[
+    > [!ATTENTION]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s(">abstract", fmt(
     [[
     > [!ABSTRACT]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">summary", fmt(
+    [[
+    > [!SUMMARY]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">info", fmt(
+    [[
+    > [!INFO]
     > {}
     ]], {i(1)}
   ))
@@ -103,9 +148,36 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s(">check", fmt(
+    [[
+    > [!CHECK]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">done", fmt(
+    [[
+    > [!DONE]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s(">question", fmt(
     [[
     > [!QUESTION]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">help", fmt(
+    [[
+    > [!HELP]
     > {}
     ]], {i(1)}
   ))
@@ -121,9 +193,27 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s(">missing", fmt(
+    [[
+    > [!MISSING]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s(">danger", fmt(
     [[
     > [!DANGER]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">error", fmt(
+    [[
+    > [!ERROR]
     > {}
     ]], {i(1)}
   ))
@@ -151,6 +241,15 @@ ls.add_snippets("markdown", {
   s(">quote", fmt(
     [[
     > [!QUOTE]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">cite", fmt(
+    [[
+    > [!CITE]
     > {}
     ]], {i(1)}
   ))
@@ -272,6 +371,14 @@ ls.add_snippets("markdown", {
   s("sin",fmt(
     [[
     \sin{{{}}}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("tan",fmt(
+    [[
+    \tan{{{}}}
     ]], {i(1)}
   ))
 })

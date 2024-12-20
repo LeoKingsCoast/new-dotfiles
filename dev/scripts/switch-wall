@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+wpaper_folder=($HOME/Pictures/wallpapers)
+
+files=($wpaper_folder/*)
+
+# echo "${files[0]}"
+# echo "${files[1]}"
+# echo "${#files[@]}"
+
+let file_random_id=${RANDOM}%${#files[@]}
+
+echo "${files[$file_random_id]}"
+
+nitrogen --head=0 --set-scaled "${files[$file_random_id]}"
+nitrogen --head=1 --set-scaled "${files[$file_random_id]}"

@@ -7,6 +7,8 @@ vim.cmd("set shiftwidth=2")
 -- Setting space as leader key
 vim.g.mapleader = " "
 
+vim.api.nvim_set_option("clipboard", "unnamedplus")
+
 -- Setting line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -30,6 +32,7 @@ vim.api.nvim_create_autocmd("FileType", {
         -- vim.opt_local.textwidth = 79
         -- vim.opt_local.columns=80
     vim.opt_local.wrap = true
+    vim.wo.linebreak = true
     vim.opt.showbreak = ">> "  -- Optional: visually indicate wrapped lines
     end,
 })
@@ -65,8 +68,15 @@ vim.keymap.set('n', '<leader>sw', function()
   end,
 {expr = true})
 
+
+-- File explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Go to file manager" })
+
+-- Ctrl+C for copying to clipboard
 vim.keymap.set("v", "<C-c>", "\"+y")
+
+
+vim.keymap.set("n", "<leader>wd", '<cmd>silent !tmux split-window -dv -l 15; tmux split-window -dh -l 70<CR>', { desc = "Open tmux development setup" })
 
 -- Obsidian keymaps
 vim.keymap.set('n', '<leader>oc', "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>")

@@ -1,4 +1,9 @@
 #!/bin/bash
 
-scrot -s -o -f ~/Pictures/OCR/test.png -e 'tesseract -l jpn $f stdout | tr -d \" \" | xclip -selection clipboard && rm $f'
+if [[ $1 == "vert" ]] then
+  scrot -s -o -f ~/Pictures/OCR/test.png -e 'tesseract -l jpn_vert $f stdout | tr -d \"\n \" | xclip -selection clipboard && rm $f'
+  exit 0
+fi
+
+scrot -s -o -f ~/Pictures/OCR/test.png -e 'tesseract -l jpn $f stdout | tr -d \"\n \" | xclip -selection clipboard && rm $f'
 

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-scrot -s -o -f ~/Pictures/OCR/test.png -e 'tesseract -l deu $f stdout | xclip -selection clipboard && rm $f'
+scrot -s -o -f ~/Pictures/OCR/test.png -e 'tesseract -l deu $f stdout | tr -d \"\n\" | xclip -selection clipboard && rm $f'
 

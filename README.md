@@ -53,7 +53,10 @@ sudo pacman -S extra/texlive-latex extra/texlive-latexextra extra/texlive-plaing
   OCR tool for several languages and language training data.
 - `scrot`: App for taking screenshots.
 - `xclip`: Xorg application for using the clipboard.
-- ``
+
+```bash
+sudo pacman -S tesseract-data-jpn_vert
+```
 
 ## Aditional steps for configuration
 

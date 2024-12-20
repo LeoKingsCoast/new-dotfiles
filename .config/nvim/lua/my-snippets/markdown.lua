@@ -22,6 +22,15 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s(">demonstration", fmt(
+    [[
+    > [!NOTE]- Demonstration
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s(">seealso", fmt(
     [[
     > [!SEEALSO]
@@ -115,6 +124,15 @@ ls.add_snippets("markdown", {
   s(">summary", fmt(
     [[
     > [!SUMMARY]
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s(">tldr", fmt(
+    [[
+    > [!TLDR]
     > {}
     ]], {i(1)}
   ))
@@ -274,6 +292,26 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s("cpp", fmt(
+    [[
+    ```cpp
+    {}
+    ```
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("make", fmt(
+    [[
+    ```make
+    {}
+    ```
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s("python", fmt(
     [[
     ```python
@@ -403,6 +441,22 @@ ls.add_snippets("markdown", {
   s("sqrt",fmt(
     [[
     \sqrt{{{}}}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("log",fmt(
+    [[
+    \log{{{}}}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
+  s("ln",fmt(
+    [[
+    \ln{{{}}}
     ]], {i(1)}
   ))
 })

@@ -248,4 +248,3 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 
-cquotes

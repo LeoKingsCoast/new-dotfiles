@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+invalid_argument_message() {
+  echo "Usage: wacom-setup <screen-number> <argument>"
+  echo ""
+  echo "<argument>:"
+  echo "  simple: Adjust wacom to fit screen dimensions"
+  echo "  precise: Adjust wacom to a portion of the screen for precise drawing"
+}
+# xsetwacom list devices | awk '{print $8, $10}'
+
+check_screen_number_pattern='[12]'
+if [[ ! "$1" =~ $check_screen_number_pattern ]]; then
+  invalid_argument_message
+  exit 1
+fi
+screen_number=$1
+
+if [[ "$2" == "simple" || "$2" == "precise" ]]; then
+  setup_mode=$2
+else
+  invalid_argument_message
+  exit 1
+fi
+
+echo "Screen Number: $screen_number"
+echo "Setup Mode: $setup_mode"
+
+STYLUS_ID=$(xsetwacom list devices | grep STYLUS | awk '{print $8}')
+#echo "Wacom stylus id: $STYLUS_ID"
+
+MONITOR_CONNECTION=$(xrandr --current | grep ' connected' | awk '{print $1}' | sed -n ${screen_number}p)
+
+MONITOR_SCREEN_WIDTH=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1 | sed -n ${screen_number}p)
+MONITOR_SCREEN_HEIGHT=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2 | sed -n ${screen_number}p)
+
+echo "Monitor Connection: $MONITOR_CONNECTION"
+echo "Width: $MONITOR_SCREEN_WIDTH"
+echo "Height: $MONITOR_SCREEN_HEIGHT"
+
+xsetwacom set "$STYLUS_ID" MapToOutput "$MONITOR_CONNECTION"

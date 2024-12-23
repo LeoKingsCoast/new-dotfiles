@@ -227,6 +227,7 @@ focus_follows_mouse no
 mouse_warping none
 
 for_window [ title="notetaker_window" ] floating enable, resize set 640 480, move position center
+for_window [ class="xpad" ] floating enable, resize set 320 320, move position center
 
 bindsym $mod+n exec kitty --title "notetaker_window" --wait-for-single-instance-window-close notetaker
 bindsym $mod+o exec kitty --title "notetaker_window" --wait-for-single-instance-window-close obsidian_quick_draft

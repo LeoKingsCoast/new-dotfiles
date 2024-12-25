@@ -41,6 +41,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 
+-- highlight search
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 

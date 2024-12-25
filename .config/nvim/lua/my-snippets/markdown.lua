@@ -33,7 +33,7 @@ ls.add_snippets("markdown", {
 ls.add_snippets("markdown", {
   s(">seealso", fmt(
     [[
-    > [!SEEALSO]
+    > [!SEEALSO] See Also
     > {}
     ]], {i(1)}
   ))

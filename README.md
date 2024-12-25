@@ -80,6 +80,15 @@ etc
 - Dependencies:
     - Audio widget: `alsa-utils`, talvez `alsa-plugins`
 
+### Caps Lock como Ctrl
+
+Para ver as opções, usar o comando `grep "caps" /usr/share/X11/xkb/rules/base.lst`.
+```bash
+setxkbmap -option "caps:ctrl_shifted_capslock"
+```
+
+Adicionar a linha ao `.xinitrc` com um `&` para que seja ativado ao ligar o computador.  
+
 ### Imagens no Neovim
 
 Qualquer dúvida consultar o [repo oficial](https://github.com/3rd/image.nvim).
@@ -107,3 +116,6 @@ luarocks --local --lua-version=5.1 install magick
 
 Não funcionou de primeira, resolvi executando no nvim `:Lazy build luarocks.nvim`
 
+---
+
+[^1]: https://www.youtube.com/watch?v=XuQVbZ0wENE

@@ -58,6 +58,15 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s(">explanation", fmt(
+    [[
+    > [!TIP] Explanation
+    > {}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s(">hint", fmt(
     [[
     > [!HINT]

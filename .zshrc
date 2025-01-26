@@ -61,9 +61,8 @@ zstyle ':vcs_info:*' enable git
 alias cp='cp -i'
 alias rm='rm -i'
 alias mv='mv -i'
-alias ll='ls -Alh'
-# alias ls="lsd --group-dirs first"
-alias ls='ls --color=auto'
+alias ll='ls -Alh --group-directories-first'
+alias ls='ls -X --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 alias dtf='cd ~/dotfiles'

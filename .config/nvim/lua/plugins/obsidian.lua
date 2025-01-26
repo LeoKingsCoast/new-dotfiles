@@ -2,8 +2,8 @@ return {
   "epwalsh/obsidian.nvim",
   enabled = true,
   version = "*",  -- recommended, use latest release instead of latest commit
-  lazy = false,
   ft = "markdown",
+  cmd = { "Obsidian" },
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
@@ -171,5 +171,23 @@ return {
       },
 
     })
+-- Obsidian keymaps
+vim.keymap.set('n', '<leader>oc', "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>")
+vim.keymap.set('n', '<leader>ot', "<cmd>ObsidianTemplate<CR>")
+vim.keymap.set('n', '<leader>oo', "<cmd>ObsidianOpen<CR>")
+vim.keymap.set('n', '<leader>ob', "<cmd>ObsidianBacklinks<CR>")
+vim.keymap.set('n', '<leader>ol', "<cmd>ObsidianLinks<CR>")
+vim.keymap.set('n', '<leader>on', "<cmd>ObsidianNew<CR>")
+vim.keymap.set('n', '<leader>og', "<cmd>ObsidianSearch<CR>")
+vim.keymap.set('n', '<leader>oq', "<cmd>ObsidianQuickSwitch<CR>")
+-- vim.keymap.set('n', '<leader>op', "<cmd>ObsidianPasteImg<CR>")
+vim.keymap.set('n', '<leader>op', "<cmd>PasteImage<CR>")
+vim.keymap.set('n', '<leader>od', "<cmd>ObsidianToday<CR>")
+vim.keymap.set('v', '<leader>of', function ()
+   -- cmd = cmd.format("<cmd>ObsidianPasteImg %s", os.time())
+  local obsidian = require("obsidian")
+  local flashcard_file_name = "flash_" .. os.time()
+  require("obsidian.commands.link_new")(obsidian.get_client(), {args=flashcard_file_name})
+end)
   end
 }

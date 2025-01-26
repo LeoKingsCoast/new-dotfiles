@@ -393,7 +393,7 @@ ls.add_snippets("markdown", {
 ls.add_snippets("markdown", {
   s("vector",fmt(
     [[
-    \vec{{\textbf{{{}}}}}
+    \vec{{\mathbf{{{}}}}}
     ]], {i(1)}
   ))
 })
@@ -401,7 +401,7 @@ ls.add_snippets("markdown", {
 ls.add_snippets("markdown", {
   s("univector",fmt(
     [[
-    \hat{{\textbf{{{}}}}}
+    \hat{{\mathbf{{{}}}}}
     ]], {i(1)}
   ))
 })
@@ -674,7 +674,25 @@ ls.add_snippets("markdown", {
 
 ls.add_snippets("markdown", {
   s("nabla", {
-    t('\\nabla')
+    t('\\vec{\\mathbf{\\nabla}}')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("divergent", {
+    t('\\vec{\\mathbf{\\nabla}} \\cdot')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("rot", {
+    t('\\vec{\\mathbf{\\nabla}} \\times ')
+  })
+})
+
+ls.add_snippets("markdown", {
+  s("curl", {
+    t('\\vec{\\mathbf{\\nabla}} \\times ')
   })
 })
 

@@ -116,6 +116,10 @@ luarocks --local --lua-version=5.1 install magick
 
 Não funcionou de primeira, resolvi executando no nvim `:Lazy build luarocks.nvim`
 
+### Steam
+
+Criei um diretório `/games/` e configurei o diretório da steam para lá.
+
 ---
 
 [^1]: https://www.youtube.com/watch?v=XuQVbZ0wENE

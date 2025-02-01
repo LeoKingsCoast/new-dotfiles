@@ -47,15 +47,15 @@ return{
                     -- vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration" })
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show hover information" })
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation" })
-                    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+                    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+                    vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
                     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
                     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
                     vim.keymap.set('n', '<space>wl', function()
                         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                     end, opts)
-                    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
                     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
                     vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "References" })
                     vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "Open diagnostic" })
@@ -66,6 +66,8 @@ return{
                     vim.keymap.set('n', '<space>il', function ()
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
                     end, { desc = "Show Inlay Hints" })
+
+                    vim.keymap.set('n', 'gh', "<cmd>ClangdSwitchSourceHeader<CR>", { desc = "Switch between Source and Header" })
                 end,
             })
         end

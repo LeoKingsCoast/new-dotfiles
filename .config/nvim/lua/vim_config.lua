@@ -55,6 +55,14 @@ vim.opt.updatetime = 50
 
 vim.opt.conceallevel = 1
 
+-- Highlight text when yanking
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight text when yanking",
+    callback = function ()
+        vim.highlight.on_yank()
+    end
+})
+
 -- Keymaps --------------------------------
 
 -- vim.keymap.set("n", "J", "<nop>")

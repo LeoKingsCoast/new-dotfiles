@@ -399,6 +399,14 @@ ls.add_snippets("markdown", {
 })
 
 ls.add_snippets("markdown", {
+  s("mathbf",fmt(
+    [[
+    \mathbf{{{}}}
+    ]], {i(1)}
+  ))
+})
+
+ls.add_snippets("markdown", {
   s("univector",fmt(
     [[
     \hat{{\mathbf{{{}}}}}

@@ -9,7 +9,7 @@ return{
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup {
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "marksman", "autotools_ls" },
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "marksman", "autotools_ls", "arduino_language_server" },
             }
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             require("mason-lspconfig").setup_handlers {

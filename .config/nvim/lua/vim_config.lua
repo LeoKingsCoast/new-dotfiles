@@ -70,6 +70,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Move through the QuickFix list
+-- Note: <M- > means "Alt"
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+
 vim.keymap.set('n', '<leader>sw', function()
   vim.wo.wrap = true
   vim.wo.linebreak = true

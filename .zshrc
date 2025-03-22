@@ -38,9 +38,9 @@ function zle-line-init {
   printf '\e[6 q'  # beam cursor
 }
 
-# Ensure the cursor is a beam when exiting Zsh
+# Ensure the cursor is a block when exiting Zsh
 function zle-line-finish {
-  printf '\e[6 q'  # beam cursor
+  printf '\e[2 q'  # beam cursor
 }
 
 # Hooks for zle (Zsh Line Editor) to detect keymap changes

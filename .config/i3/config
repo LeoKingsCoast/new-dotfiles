@@ -257,6 +257,7 @@ exec --no-startup-id "/home/leore/dev/scripts/switch-wall"
 
 bindsym Print exec "flameshot gui"
 
+bindsym --release $mod+Control+l exec "/home/leore/dev/scripts/lock" 
 bindsym --release $mod+c exec "/home/leore/dev/scripts/jpn-ocr" 
 bindsym --release $mod+m exec "/home/leore/dev/scripts/jpn-ocr vert" 
 bindsym --release $mod+v exec "/home/leore/dev/scripts/deu-ocr"

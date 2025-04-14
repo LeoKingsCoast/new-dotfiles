@@ -2,10 +2,19 @@ return{
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
+      local custom_theme = require('lualine.themes.eldritch');
+      custom_theme.normal.b.bg = '#1c243f';
+      custom_theme.normal.c.bg = '#181818';
+      custom_theme.insert.b.bg = '#1c243f';
+      custom_theme.visual.b.bg = '#1c243f';
+      custom_theme.replace.b.bg = '#1c243f';
+      custom_theme.command.b.bg = '#1c243f';
+      custom_theme.terminal.b.bg = '#1c243f';
+
       require('lualine').setup({
       options = {
         icons_enabled = true,
-        theme = 'eldritch',
+        theme = custom_theme,
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
         disabled_filetypes = {

@@ -186,8 +186,8 @@ bindsym $mod+r mode "resize"
 
 # ==================================== CUSTOM =========================================
 
-set $focused-bg-color    #7081d0
-set $bg-color 	         #212337
+set $focused-bg-color    #506180
+set $bg-color 	         #181818
 set $inactive-bg-color   #323449
 set $text-color          #04d1f9
 set $inactive-text-color #676E7D

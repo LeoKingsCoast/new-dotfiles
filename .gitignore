@@ -7,3 +7,4 @@
 quotes.txt
 */tmux/plugins/*
 .config/nvim/lazy-lock.json
+.fonts/

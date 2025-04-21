@@ -14,6 +14,6 @@ return {
         -- fill any relevant options here
     },
     config = function ()
-        vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle reveal_force_cwd<CR>", { desc = "Open Neotree" })
+        vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle reveal_force_cwd<CR>", { desc = "Toggle Neotree" })
     end
 }

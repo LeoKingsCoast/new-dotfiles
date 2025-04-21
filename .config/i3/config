@@ -49,7 +49,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -257,7 +258,7 @@ exec --no-startup-id "/home/leore/dev/scripts/switch-wall"
 
 bindsym Print exec "flameshot gui"
 
-bindsym --release $mod+Control+l exec "/home/leore/dev/scripts/lock" 
+# bindsym --release $mod+Control+l exec "/home/leore/dev/scripts/lock" 
 bindsym --release $mod+c exec "/home/leore/dev/scripts/jpn-ocr" 
 bindsym --release $mod+m exec "/home/leore/dev/scripts/jpn-ocr vert" 
 bindsym --release $mod+v exec "/home/leore/dev/scripts/deu-ocr"

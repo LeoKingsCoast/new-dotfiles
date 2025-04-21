@@ -6,6 +6,29 @@ return{
         end
     },
     {
+        "folke/neodev.nvim", opts = {},
+        config = function ()
+            -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+            require("neodev").setup({
+                -- add any options here, or leave empty to use the default settings
+            })
+
+            -- then setup your lsp server as usual
+            local lspconfig = require('lspconfig')
+
+            -- example to setup lua_ls and enable call snippets
+            lspconfig.lua_ls.setup({
+                settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace"
+                        }
+                    }
+                }
+            })
+        end
+    },
+    {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup {
@@ -20,9 +43,20 @@ return{
                     require("lspconfig")[server_name].setup ({
                         capabilities = capabilities,
                         inlay_hints = { enabled = true },
+                        vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })
                     })
                 end,
+                -- require('lspconfig').rust_analyzer.setup({
+                --     ["rust-analyzer"] = {
+                --         diagnostics = {
+                --             enable = true,
+                --             disabled = {"unresolved-proc-macro", "unused-variables", "dead-code"},
+                --             enableExperimental = true,
+                --         },
+                --     },
+                -- })
             }
+
         end
     },
     {

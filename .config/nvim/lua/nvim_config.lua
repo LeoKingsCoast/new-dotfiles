@@ -9,6 +9,10 @@ vim.cmd("set shiftwidth=4")
 -- Set automatic indentation
 vim.opt.smartindent = true
 
+-- Highlight search
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
 -- ================================ Yanking ==================================
 
 -- Share register with the clipboard

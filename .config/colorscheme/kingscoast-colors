@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+# My custom colortheme, based on eldritch
+
+black_base=#212337
+black_light=#363a4f # Active tmux window
+black_var1=#232e3b
+black_var2=#363a4f
+black_var3=#31412c # Inactive tmux window
+
+red_base=#f15c65
+red_light=#ed8796 # errors
+red_var1=#8e5c60
+red_var2=#f0c6c6
+
+green_base=#37f499
+green_light=#89ffb8
+green_var1=#648359
+green_var2=#a6da95
+
+yellow_base=#f1fc79
+yellow_light=#eed49f #warnings
+orange=#f5a97f
+
+blue_base=#6a8df4
+blue_light=#8aadf4
+blue_var1=#536892
+blue_var2=#b7bdf8
+
+magenta_base=#f265b5
+magenta_light=#ee99a0
+magenta_var1=#765f93
+MY_EYES=#F712FF
+
+cyan_base=#04d1f9
+cyan_light=#7dc4e4
+
+white_base=#ebfafa
+white_light=#a5adcb # comments
+white_var1=#6d7195
+white_var2=#c6a0f6
+white_var3=#cad3f5 # text
+
+# foreground            $linkarzu_color14
+# background            $linkarzu_color07
+# selection_foreground  $linkarzu_color14
+# selection_background   $linkarzu_color16
+# url_color             $linkarzu_color03
+# # black
+# color0                $linkarzu_color10
+# color8                $linkarzu_color08
+# # red
+# color1                $linkarzu_color11
+# color9                $linkarzu_color11
+# # green
+# color2                $linkarzu_color02
+# color10               $linkarzu_color02
+# # yellow
+# color3                $linkarzu_color05
+# color11               $linkarzu_color05
+# # blue
+# color4                $linkarzu_color04
+# color12               $linkarzu_color04
+# # magenta
+# color5                $linkarzu_color01
+# color13               $linkarzu_color01
+# # cyan
+# color6                $linkarzu_color03
+# color14               $linkarzu_color03
+# # white
+# color7                $linkarzu_color14
+# color15               $linkarzu_color14
+# # Cursor colors
+# cursor                $linkarzu_color24
+# cursor_text_color     $linkarzu_color24
+# # Tab bar colors
+# active_tab_foreground  $linkarzu_color10
+# active_tab_background   $linkarzu_color02
+# inactive_tab_foreground $linkarzu_color03
+# inactive_tab_background $linkarzu_color10
+# # Marks
+# mark1_foreground      $linkarzu_color10
+# mark1_background      $linkarzu_color11
+# # Splits/Windows
+# active_border_color   $linkarzu_color04
+# inactive_border_color  $linkarzu_color10

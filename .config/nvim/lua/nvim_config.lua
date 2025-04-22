@@ -13,6 +13,14 @@ vim.opt.smartindent = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
+-- Set true colors
+vim.opt.termguicolors = true
+
+-- File behavior
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+
 -- ================================ Yanking ==================================
 
 -- Share register with the clipboard

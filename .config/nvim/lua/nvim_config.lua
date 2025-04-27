@@ -30,6 +30,11 @@ vim.opt.undofile = true
 -- Set conceal level for obsidian nvim
 vim.opt.conceallevel = 1
 
+-- Scrolling never goes beyond 8 characters
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+
 -- ================================ Yanking ==================================
 
 -- Share register with the clipboard

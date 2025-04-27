@@ -27,6 +27,9 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 
+-- Set conceal level for obsidian nvim
+vim.opt.conceallevel = 1
+
 -- ================================ Yanking ==================================
 
 -- Share register with the clipboard

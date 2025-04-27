@@ -1,6 +1,6 @@
 require("vim_config")
-require("my-snippets.markdown")
 require("config.lazy")
+require("my-snippets.markdown")
 
 -- theme
 vim.cmd.colorscheme "eldritch"

@@ -1,6 +1,7 @@
 require("vim_config")
 require("config.lazy")
 require("my-snippets.markdown")
+require("my-functions.cheatsheet")
 
 -- theme
 vim.cmd.colorscheme "eldritch"

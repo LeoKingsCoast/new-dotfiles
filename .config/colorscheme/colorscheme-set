@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+alacrity_color_config="
+[colors.primary]
+background=${black_base}
+"
+
+echo "${foo}"

@@ -1,8 +1,67 @@
 #!/usr/bin/env bash
 
-alacrity_color_config="
-[colors.primary]
-background=${black_base}
+source kingscoast-colors
+
+alacritty_color_config="[colors.primary]
+background = \"${black_background}\"
+bright_foreground = \"${white_base}\"
+foreground = \"${white_base}\"
+
+[colors.normal]
+black = \"${black_base}\"
+blue = \"${blue_base}\"
+cyan = \"${cyan_base}\"
+green = \"${green_base}\"
+magenta = \"${magenta_base}\"
+red = \"${red_base}\"
+white = \"${white_base}\"
+yellow = \"${yellow_base}\"
+
+[colors.bright]
+black = \"${black_light}\"
+blue = \"${blue_light}\"
+cyan = \"${cyan_light}\"
+green = \"${green_light}\"
+magenta = \"${magenta_light}\"
+red = \"${red_light}\"
+white = \"${white_light}\"
+yellow = \"${yellow_light}\"
+
+[colors.cursor]
+cursor = \"${green_base}\"
+text = \"${white_base}\"
+
+[colors.hints.end]
+background = \"${black_background}\"
+foreground = \"${yellow_light}\"
+
+[colors.hints.start]
+background = \"${yellow_light}\"
+foreground = \"${black_background}\"
+
+[colors.line_indicator]
+background = \"None\"
+foreground = \"None\"
+
+[colors.search.focused_match]
+background = \"${red_base}\"
+foreground = \"${black_background}\"
+
+# [colors.search.\"footer.bar\"]
+# background = \"${white_base}\"
+# foreground = \"${white_base}\"
+
+[colors.search.matches]
+background = \"${green_base}\"
+foreground = \"${black_background}\"
+
+[colors.selection]
+background = \"#bf4f8e\"
+text = \"${white_base}\"
+
+[colors.vi_mode_cursor]
+cursor = \"${green_base}\"
+text = \"${white_base}\"
 "
 
-echo "${foo}"
+echo "${alacritty_color_config}" > ../alacritty/alacritty.toml

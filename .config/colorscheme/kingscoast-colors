@@ -2,6 +2,7 @@
 
 # My custom colortheme, based on eldritch
 
+black_background=#181818
 black_base=#212337
 black_light=#363a4f # Active tmux window
 black_var1=#232e3b
@@ -18,8 +19,8 @@ green_light=#89ffb8
 green_var1=#648359
 green_var2=#a6da95
 
-yellow_base=#f1fc79
-yellow_light=#eed49f #warnings
+yellow_base=#e9f941
+yellow_light=#f1fc79 #warnings
 orange=#f5a97f
 
 blue_base=#6a8df4

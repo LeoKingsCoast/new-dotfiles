@@ -31,32 +31,28 @@ return{
     {
         "williamboman/mason-lspconfig.nvim",
         config = function()
-            require("mason-lspconfig").setup {
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "marksman", "pyright", "autotools_ls", "arduino_language_server" },
-            }
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            require("mason-lspconfig").setup_handlers {
-                -- The first entry (without a key) will be the default handler
-                -- and will be called for each installed server that doesn't have
-                -- a dedicated handler.
-                function (server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup ({
-                        capabilities = capabilities,
-                        inlay_hints = { enabled = true },
-                        vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })
+            require("mason-lspconfig").setup {
+                automatic_enable = true,
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "marksman", "pyright", "autotools_ls", "arduino_language_server" },
+                handlers = {
+                    function (server_name) -- default handler (optional)
+                        require("lspconfig")[server_name].setup ({
+                            capabilities = capabilities,
+                            inlay_hints = { enabled = true },
+                        })
+                    end,
+                    require('lspconfig').rust_analyzer.setup({
+                        ["rust-analyzer"] = {
+                            diagnostics = {
+                                enable = true,
+                                disabled = {"unresolved-proc-macro", "unused-variables", "dead-code"},
+                                enableExperimental = true,
+                            },
+                        },
                     })
-                end,
-                -- require('lspconfig').rust_analyzer.setup({
-                --     ["rust-analyzer"] = {
-                --         diagnostics = {
-                --             enable = true,
-                --             disabled = {"unresolved-proc-macro", "unused-variables", "dead-code"},
-                --             enableExperimental = true,
-                --         },
-                --     },
-                -- })
+                }
             }
-
         end
     },
     {
@@ -79,6 +75,7 @@ return{
                     -- vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
                     -- vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
                     -- vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+                    vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration" })
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show hover information" })

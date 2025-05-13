@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+color_source_file="kingscoast-colors"
+color_active_file="active-colors"
+
 source kingscoast-colors
+
+cat "${color_source_file}" > "${color_active_file}"
 
 alacritty_color_config="[colors.primary]
 background = \"${black_background}\"

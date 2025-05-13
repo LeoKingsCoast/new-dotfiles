@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# WARNING: Do not comment on the same lines as the colors, such as "color=#a2a2a2 # comment". The colors will be read incorrectly by neovim if you do.
+
 # My custom colortheme, based on eldritch
 # Color light and dark variants obtained from this site, going 4 levels bright and dark:
 # https://www.color-hex.com/color/f15c65
@@ -46,6 +48,7 @@ cyan_dark=#0292ae
 
 white_base=#ebfafa
 white_light=#b5cdeb # comments
+grey=#a5afc2
 white_var1=#6d7195
 white_var2=#c6a0f6
 white_var3=#cad3f5 # text

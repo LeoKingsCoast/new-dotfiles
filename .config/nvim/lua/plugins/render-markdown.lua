@@ -5,14 +5,14 @@ return{
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-  init = function()
-    vim.cmd(string.format([[highlight Headline1Bg guifg=%s guibg=%s]], '#212337', '#a48cf2'));
-    vim.cmd(string.format([[highlight Headline2Bg guifg=%s guibg=%s]], '#212337', '#04d1f9'));
-    vim.cmd(string.format([[highlight Headline3Bg guifg=%s guibg=%s]], '#212337', '#37f499'));
-    vim.cmd(string.format([[highlight Headline4Bg guifg=%s guibg=%s]], '#212337', '#f265b5'));
-    vim.cmd(string.format([[highlight Headline5Bg guifg=%s guibg=%s]], '#212337', '#f16c75'));
-    vim.cmd(string.format([[highlight Headline6Bg guifg=%s guibg=%s]], '#212337', '#f1fc79'));
-  end,
+  -- init = function()
+  --   vim.cmd(string.format([[highlight Headline1Bg guifg=%s guibg=%s]], '#212337', '#a48cf2'));
+  --   vim.cmd(string.format([[highlight Headline2Bg guifg=%s guibg=%s]], '#212337', '#04d1f9'));
+  --   vim.cmd(string.format([[highlight Headline3Bg guifg=%s guibg=%s]], '#212337', '#37f499'));
+  --   vim.cmd(string.format([[highlight Headline4Bg guifg=%s guibg=%s]], '#212337', '#f265b5'));
+  --   vim.cmd(string.format([[highlight Headline5Bg guifg=%s guibg=%s]], '#212337', '#f16c75'));
+  --   vim.cmd(string.format([[highlight Headline6Bg guifg=%s guibg=%s]], '#212337', '#f1fc79'));
+  -- end,
   config = function()
     require('render-markdown').setup({
       heading = {

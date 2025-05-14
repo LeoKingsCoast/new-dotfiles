@@ -6,15 +6,18 @@
 # Color light and dark variants obtained from this site, going 4 levels bright and dark:
 # https://www.color-hex.com/color/f15c65
 
-black_background=#181818 # Inactive tmux window
+# Inactive tmux window
+black_background=#181818
 black_base=#212337
-black_light=#363a4f # Active tmux window
+# Active tmux window
+black_light=#363a4f
 black_var1=#232e3b
 black_var2=#363a4f
-black_var3=#31412c 
+black_var3=#31412c
 
 red_base=#f15c65
-red_light=#f58c93 # errors
+# errors
+red_light=#f58c93
 red_dark=#a84046
 red_var1=#8e5c60
 red_var2=#f0c6c6
@@ -26,7 +29,8 @@ green_var1=#648359
 green_var2=#a6da95
 
 yellow_base=#e9f941
-yellow_light=#effa7a #warnings
+# warnings
+yellow_light=#effa7a
 yellow_dark=#a3ae2d
 orange=#f5a97f
 
@@ -35,6 +39,7 @@ blue_light=#96aff7
 blue_dark=#4a62aa
 blue_var1=#536892
 blue_var2=#b7bdf8
+purple=#a48cf2
 
 magenta_base=#f265b5
 magenta_light=#f593cb
@@ -46,9 +51,12 @@ cyan_base=#04d1f9
 cyan_light=#4fdefa
 cyan_dark=#0292ae
 
+pure_white=#ffffff
 white_base=#ebfafa
-white_light=#b5cdeb # comments
+# comments
+white_light=#b5cdeb
 grey=#a5afc2
 white_var1=#6d7195
 white_var2=#c6a0f6
-white_var3=#cad3f5 # text
+# comments
+white_var3=#6c7b8d

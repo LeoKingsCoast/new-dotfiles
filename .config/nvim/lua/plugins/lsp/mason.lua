@@ -16,6 +16,7 @@ return {
           "rust_analyzer",
           "clangd",
           "marksman",
+          "html",
           "pyright",
           "autotools_ls",
           "arduino_language_server"

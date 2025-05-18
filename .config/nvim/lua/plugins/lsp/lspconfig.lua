@@ -10,7 +10,8 @@ return {
       require('blink.cmp').get_lsp_capabilities()
     )
 
-    vim.diagnostic.config({ virtual_text = true })
+    -- change "virtual_lines" to "virtual_text" if the new line gets anoying
+    vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
     -- Mappings.
     vim.api.nvim_create_autocmd('LspAttach', {

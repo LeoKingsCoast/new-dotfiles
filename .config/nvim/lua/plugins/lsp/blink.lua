@@ -27,7 +27,7 @@ return {
           name = "lsp",
           enabled = true,
           module = "blink.cmp.sources.lsp",
-          min_keyword_length = 2,
+          min_keyword_length = 0,
           score_offset = 90, -- the higher the number, the higher the priority
         },
         path = {
@@ -81,13 +81,13 @@ return {
 
     opts.completion = {
       menu = {
-        auto_show = false,
-        border = "single",
+        auto_show = true,
+        border = "rounded",
       },
       documentation = {
-        auto_show = true,
+        auto_show = false,
         window = {
-          border = "single",
+          border = "rounded",
         },
       },
       ghost_text = {

@@ -26,3 +26,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
+-- Needs to be unset here for the hover information config to work in the
+-- file plugins/lsp/blink.lua
+vim.keymap.set('n', 'K', "<nop>")

@@ -46,10 +46,10 @@ return {
                 },
                 bg_dark = colors["black_background"],
                 -- Lualine line across
-                bg_highlight = colors["black_var2"],
+                bg_highlight = colors["black_background"],
                 terminal_black = colors["black_background"],
                 fg_dark = colors["pure_white"],
-                fg_gutter = colors["black_background"],
+                fg_gutter = colors["black_var2"],
                 dark3 = colors["black_background"],
                 dark5 = colors["black_background"],
                 bg_visual = colors["white_light"],

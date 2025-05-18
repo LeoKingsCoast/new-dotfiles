@@ -11,7 +11,8 @@ return {
     )
 
     -- change "virtual_lines" to "virtual_text" if the new line gets anoying
-    vim.diagnostic.config({ virtual_lines = { current_line = true } })
+    vim.diagnostic.config({ virtual_text = { current_line = true } })
+
 
     -- Mappings.
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -22,7 +23,9 @@ return {
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "LSP Code Action" })
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration" })
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show hover information" })
+        vim.keymap.set('n', 'K', function ()
+          vim.lsp.buf.hover({ border = "rounded" })
+        end, { desc = "Show hover information" })
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation" })
         vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, { desc = "Go to type definition" })
         vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
@@ -33,7 +36,9 @@ return {
         end, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "References" })
-        vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagnostic" })
+        vim.keymap.set('n', '<leader>e', function ()
+          vim.diagnostic.open_float({ border = "rounded" })
+        end, { desc = "Open diagnostic" })
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
         vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Set diagnostic list" })

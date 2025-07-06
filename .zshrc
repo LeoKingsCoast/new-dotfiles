@@ -68,6 +68,7 @@ alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 alias dtf='cd ~/dotfiles'
 alias screenhome='xrandr --output HDMI-1 --auto --right-of eDP-1'
 alias screenleave='xrandr --output HDMI-1 --off'
+alias fetch-spice='kicad-cli sch export netlist --format spice'
 
 # Prompt style
 # PROMPT='%B%F{cyan}󰣇 %n %B%F{015}%~ ${vcs_info_msg_0_} %B%F{006}%b%F{015} '

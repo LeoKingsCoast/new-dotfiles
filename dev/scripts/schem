@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+circuits_dir="$HOME/vault/assets/circuits"
+
+function err() {
+    echo "Usage:
+        - schem open [optional: schematic-name]
+        - schem sim [optional: schematic-name]"
+    exit 1
+}
+
+if [[ $# -lt 1 ]] || [[ $# -gt 2 ]]; then
+    err
+fi
+if [[ $1 != "create" ]] && [[ $1 != "open" ]] && [[ $1 != "sim" ]]; then
+    err
+fi
+
+if [[ $1 == "create" ]]; then
+    echo "Creating: $2"
+    ${HOME}/dev/scripts/open_schem "$2"
+    exit 0
+fi
+
+selected=$(find ${circuits_dir} -mindepth 1 -type d -printf "%f\n" | fzf)
+
+echo "Selected: $selected"
+
+if [[ -z $selected ]]; then
+    exit 1
+fi
+
+if [[ $1 == "open" ]]; then
+    echo "Opening: $selected"
+    ${HOME}/dev/scripts/open_schem "$selected"
+    exit 0
+elif [[ $1 == "sim" ]]; then
+    echo "Running spice with: $selected"
+    ${HOME}/dev/scripts/open_schem sim "$selected"
+    exit 0
+else
+    err
+fi
+

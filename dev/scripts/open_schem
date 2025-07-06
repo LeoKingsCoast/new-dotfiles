@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+circuits_dir="$HOME/vault/assets/circuits"
+
+if [[ ! $# -gt 2 ]]; then
+    echo "Usage:
+        open_schem [schematic-name]"
+fi
+
+if [[ $1 == "sim" ]]; then
+    schem_dir="${circuits_dir}/$2"
+    file="${schem_dir}/$2.cir"
+    ngspice "$file"
+else
+    schem_dir="${circuits_dir}/$1"
+    mkdir -p "${schem_dir}"
+    file="${schem_dir}/$1.kicad_sch"
+    eeschema "$file" &
+fi
+

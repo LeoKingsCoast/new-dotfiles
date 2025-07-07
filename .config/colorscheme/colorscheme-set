@@ -10,7 +10,7 @@ cat "${color_source_file}" > "${color_active_file}"
 alacritty_color_config="[colors.primary]
 background = \"${black_background}\"
 bright_foreground = \"${white_base}\"
-foreground = \"${white_base}\"
+foreground = \"${pure_white}\"
 
 [colors.normal]
 black = \"${black_base}\"
@@ -33,8 +33,8 @@ white = \"${white_light}\"
 yellow = \"${yellow_light}\"
 
 [colors.cursor]
-cursor = \"${green_base}\"
-text = \"${white_base}\"
+cursor = \"${pure_white}\"
+text = \"${black_background}\"
 
 [colors.hints.end]
 background = \"${black_background}\"

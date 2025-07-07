@@ -117,6 +117,8 @@ return {
                 TelescopeNormal = { fg = colors["pure_white"], bg = colors["black_background"] },
                 TelescopeMultiSelection = { fg = colors["green_base"], bg = colors["black_base"] },
                 TelescopeSelection = { fg = colors["pure_white"], bg = colors["black_light"] },
+
+                LspInlayHint = { fg = colors["white_var3"]},
             }
 
             -- Apply all highlight definitions at once

@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
-color_source_file="kingscoast-colors"
+color_source_file="$1"
 color_active_file="active-colors"
 
-source kingscoast-colors
+alacritty_theme_file="${HOME}/dotfiles/.config/alacritty/theme.toml"
+
+source $color_source_file
 
 cat "${color_source_file}" > "${color_active_file}"
 
-alacritty_color_config="[colors.primary]
+alacritty_color_config="# This is an automatically created file to set the alacritty theme. 
+# Do not modify this file. Run ../colorscheme/colorscheme-set <theme>
+
+[colors.primary]
 background = \"${black_background}\"
 bright_foreground = \"${white_base}\"
 foreground = \"${pure_white}\"
@@ -69,4 +74,4 @@ cursor = \"${green_base}\"
 text = \"${white_base}\"
 "
 
-echo "${alacritty_color_config}" > ../alacritty/alacritty.toml
+echo "${alacritty_color_config}" > ${alacritty_theme_file}

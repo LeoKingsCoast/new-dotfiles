@@ -1,5 +1,6 @@
 .config/i3/bumblebee-status
 .config/i3blocks/scripts
+.config/alacritty/theme.toml
 .config/colorscheme/active-colors
 *.log
 .config/awesome/awesome-wm-widgets

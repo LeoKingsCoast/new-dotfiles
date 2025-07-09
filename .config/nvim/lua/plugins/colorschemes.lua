@@ -70,6 +70,10 @@ return {
         -- This function is found in the documentation
         on_highlights = function(highlights)
             local highlight_definitions = {
+                -- Makes background transparent
+                Normal = { bg = "none" },
+                NormalFloat = { bg = "none" },
+
                 -- nvim-spectre or grug-far.nvim highlight colors
                 DiffChange = { bg = colors["cyan_base"], fg = "black" },
                 DiffDelete = { bg = colors["red_base"], fg = "black" },

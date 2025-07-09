@@ -184,7 +184,7 @@ git_prompt_status() {
   fi
 
   if [[ ! -z "$STATUS" ]]; then
-    echo " [ $STATUS]"
+      echo "( $STATUS)"
   fi
 }
 
@@ -228,7 +228,7 @@ prompt_purification_setup() {
 
     prompt_git_branch
     RPROMPT=''
-    PROMPT=$'%F{cyan}[ %n]%F{white}%~ $(prompt_git_info) $(git_prompt_status) \n%B%F{yellow} 󰭄%f%b '
+    PROMPT=$'%F{cyan}[%n@%M]%F{white}%~ $(prompt_git_info)$(git_prompt_status) \n%B%F{yellow} >%f%b '
 }
 
 prompt_purification_setup

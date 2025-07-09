@@ -9,7 +9,7 @@ return{
     require('render-markdown').setup({
       heading = {
         -- Turn on / off heading icon & background rendering
-        enabled = true,
+        enabled = false,
         -- Turn on / off any sign column related rendering
         sign = true,
         -- Determines how icons fill the available space:
@@ -28,11 +28,11 @@ return{
         --  full:  full width of the window
         -- Can also be an array of the above values in which case the 'level' is used
         -- to index into the array using a clamp
-        width = 'full',
+        width = 'block',
         -- Amount of padding to add to the left of headings
-        left_pad = 0,
+        left_pad = 1,
         -- Amount of padding to add to the right of headings when width is 'block'
-        right_pad = 0,
+        right_pad = 1,
         -- Minimum width to use for headings when width is 'block'
         min_width = 0,
         -- Determins if a border is added above and below headings

@@ -7,56 +7,55 @@
 # https://www.color-hex.com/color/f15c65
 
 # Inactive tmux window
-black_background=#181818
-black_base=#212337
+black_background=#020105
+black_base=#2f2e39
 # Active tmux window
 black_light=#363a4f
-black_var1=#232e3b
-black_var2=#363a4f
-black_var3=#31412c
+black_var1=#12111c
+black_var2=#16141f
+black_var3=#2A2933
 
-red_base=#f15c65
+red_base=#eb6f92
 # errors
-red_light=#f58c93
-red_dark=#a84046
+red_light=#ebbcba
+red_dark=#a44d66
 red_var1=#8e5c60
 red_var2=#f0c6c6
 
-green_base=#37f499
-green_light=#73f7b7
-green_dark=#26aa6b
-green_var1=#648359
-green_var2=#a6da95
+green_base=#72c982
+green_light=#9cd9a7
+green_dark=#4f8c5b
+green_var1=#4f7453
+green_var2=#6a9c78
 
-yellow_base=#e9f941
+yellow_base=#f6c177
 # warnings
-yellow_light=#effa7a
-yellow_dark=#a3ae2d
-orange=#f5a97f
+yellow_light=#f8d39f
+yellow_dark=#ac8753
+orange=#ea9d34
 
-blue_base=#6a8df4
-blue_light=#96aff7
-blue_dark=#4a62aa
+blue_base=#286983
+blue_light=#6896a8
+blue_dark=#1c495b
 blue_var1=#536892
 blue_var2=#b7bdf8
-purple=#a48cf2
+purple=#907aa9
 
-magenta_base=#f265b5
-magenta_light=#f593cb
-magenta_dark=#a9467e
+magenta_base=#c4a7e7
+magenta_light=#d5c1ee
+magenta_dark=#d7827e
 magenta_var1=#765f93
 MY_EYES=#F712FF
 
-cyan_base=#04d1f9
-cyan_light=#4fdefa
-cyan_dark=#0292ae
+cyan_base=#3e8fb0
+cyan_light=#77b0c7
+cyan_dark=#2b647b
 
-pure_white=#ffffff
+pure_white=#e0def4
 white_base=#ebfafa
-# comments
 white_light=#b5cdeb
 grey=#a5afc2
-white_var1=#6d7195
-white_var2=#c6a0f6
+white_var1=#9893a5
+white_var2=#6e6a86
 # comments
-white_var3=#6c7b8d
+white_var3=#908caa

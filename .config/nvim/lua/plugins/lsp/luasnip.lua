@@ -8,5 +8,6 @@ return {
   config = function ()
     require("plugins.lsp.snippets.lua_snippets")
     require("plugins.lsp.snippets.markdown_snippets")
+    require("plugins.lsp.snippets.c_snippets")
   end
 }

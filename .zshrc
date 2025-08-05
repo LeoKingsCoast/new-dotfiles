@@ -7,6 +7,8 @@
 export PATH=$PATH:$HOME/appimages
 export PATH=$PATH:$HOME/dev/scripts
 
+export ZSH_GIT_PROMPT_EXCLUDE=$ZSH_GIT_PROMPT_EXCLUDE:$HOME/dev/sources/kernel/workdir/linux
+
 # editor
 export EDITOR="nvim"
 

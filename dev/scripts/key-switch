@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+listPrefix="EnabledIMList="
+imlist=$(grep ^${listPrefix} ${HOME}/.config/fcitx/profile)
+
+kb_options=$(echo "${imlist:${#listPrefix}}" | awk '
+    BEGIN {FS=","}
+    {
+        out=""
+        for(i = 1; i < NF; i++) {
+            split($i, pair, ":")
+            if (pair[2] == "True")
+                print pair[1]
+        }
+    }
+')
+
+selected=$(echo "${kb_options}" | dmenu)
+
+fcitx-remote -s ${selected}

@@ -57,7 +57,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec dmenu_run -i -l 5
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -258,11 +258,12 @@ exec --no-startup-id "/home/leore/dev/scripts/switch-wall"
 
 bindsym Print exec "flameshot gui"
 
-# bindsym --release $mod+Control+l exec "/home/leore/dev/scripts/lock" 
+bindsym --release $mod+Control+l exec "/home/leore/dev/scripts/lock" 
 bindsym --release $mod+c exec "/home/leore/dev/scripts/jpn-ocr" 
 bindsym --release $mod+m exec "/home/leore/dev/scripts/jpn-ocr vert" 
 bindsym --release $mod+v exec "/home/leore/dev/scripts/deu-ocr"
 bindsym --release $mod+g exec "/home/leore/dev/scripts/ankiadd-deu"
+bindsym --release $mod+Control+k exec "/home/leore/dev/scripts/key-switch"
 bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
 bindsym $mod+s exec "/home/leore/dev/scripts/switch-wall"
 

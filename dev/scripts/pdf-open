@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Searches through a list of pre-defined directories for pdf files and makes a
+# dmenu prompt for the user to open one of them in a pdf reader. The default
+# reader is zathura.
+#
+# Usage: pdf-reader [reader]
+
+default_reader="zathura"
+
+reader="$1"
+[ -z "$reader" ] && reader="$default_reader"
+
+src_dirs="\
+${HOME}/sync-folder/books
+${HOME}/Documents/Livros\
+"
+
+sources=$(find $src_dirs -maxdepth 2 -name "*.pdf")
+
+selected=$(echo "$sources" | dmenu -i -l 5 -p "Select a file to open: ") || exit 0
+
+file_name=$(basename "$selected")
+
+notify-send "Opened $file_name with $reader" && $reader "$selected"

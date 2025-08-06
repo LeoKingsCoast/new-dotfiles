@@ -264,7 +264,7 @@ bindsym --release $mod+m exec "/home/leore/dev/scripts/jpn-ocr vert"
 bindsym --release $mod+v exec "/home/leore/dev/scripts/deu-ocr"
 bindsym --release $mod+g exec "/home/leore/dev/scripts/ankiadd-deu"
 bindsym --release $mod+Control+k exec "/home/leore/dev/scripts/key-switch"
-bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
+bindsym $mod+p exec "${HOME}/dev/scripts/pdf-open"
 bindsym $mod+s exec "/home/leore/dev/scripts/switch-wall"
 
 assign [class="obsidian"] $ws3

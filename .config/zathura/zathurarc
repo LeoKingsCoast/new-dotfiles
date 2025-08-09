@@ -1,4 +1,5 @@
 map b adjust_window best-fit
 set recolor-lightcolor #2a2933
 set recolor-darkcolor #e0def4
+set selection-clipboard clipboard
 map i recolor

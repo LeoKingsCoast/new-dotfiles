@@ -13,6 +13,7 @@ reader="$1"
 
 src_dirs="\
 ${HOME}/sync-folder/books
+${HOME}/Documents/datasheets
 ${HOME}/Documents/Livros\
 "
 

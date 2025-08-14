@@ -1,0 +1,128 @@
+#!/usr/bin/env bash
+
+DEFAULT_STORAGE_FILE=~/.local/share/seedev/known-devices
+
+usage() {
+    echo "Usage: seedev [flags] device
+        - device: /dev/*
+        - [-a]: all information
+        - [-g]: guess device from information in storage file and return its LABEL
+        - [-s LABEL]: store device information in storage file and give it a LABEL
+        - [-r]: remove device information from storage file
+    "
+}
+
+# @brief Store in disk a label for a given device's model and vendor ID so 
+# that it's recognized later in find_dev
+#
+# $1: device path (/dev/*)
+# $2: label
+# $3: storage file
+store_dev() {
+    info=$(udevadm info -q property --property=ID_VENDOR_ID,ID_MODEL_ID,ID_VENDOR_FROM_DATABASE,ID_MODEL_FROM_DATABASE -n $1)
+
+    vendor_id=$(echo "$info" | grep "ID_VENDOR_ID" | sed 's/ID_VENDOR_ID=//g')
+    model_id=$(echo "$info" | grep "ID_MODEL_ID" | sed 's/ID_MODEL_ID=//g')
+
+    storage_file="${3}"
+
+    mkdir -p $(dirname "${storage_file}")
+
+    if [ ! -z "$vendor_id" ] && [ ! -z "$model_id" ]; then
+
+        while IFS= read -r line; do
+            read -r vid pid label <<< $(echo "$line" | tr ':' ' ')
+            if [ "$vendor_id" = "$vid" ] && [ "$model_id" = "$pid" ]; then
+                echo "Device already in storage file. Skipping."; exit 2
+            fi
+        done < "${storage_file}"
+
+        echo "$vendor_id:$model_id:$2" >> "${storage_file}"
+    else
+        echo "Unknown device. Can not create a label for it"; exit 1
+    fi
+
+    exit 0
+}
+
+# @brief Delete the given device from the storage file
+#
+# $1: device path (/dev/*)
+# $2: storage file
+delete_dev() {
+    info=$(udevadm info -q property --property=ID_VENDOR_ID,ID_MODEL_ID,ID_VENDOR_FROM_DATABASE,ID_MODEL_FROM_DATABASE -n $1)
+
+    vendor_id=$(echo "$info" | grep "ID_VENDOR_ID" | sed 's/ID_VENDOR_ID=//g')
+    model_id=$(echo "$info" | grep "ID_MODEL_ID" | sed 's/ID_MODEL_ID=//g')
+
+    storage_file=$2;
+
+    sed -i "/$vendor_id:$model_id/d" "$storage_file"
+}
+
+# @brief Search in the storage file for previously recorded USB devices.
+# If found, return the user-defined label for the device.
+#
+# $1: device (/dev/*)
+# $2: storage_file
+guess_dev() {
+    info=$(udevadm info -q property --property=ID_VENDOR_ID,ID_MODEL_ID,ID_VENDOR_FROM_DATABASE,ID_MODEL_FROM_DATABASE -n $1)
+    vendor_id=$(echo "$info" | grep "ID_VENDOR_ID" | sed 's/ID_VENDOR_ID=//g')
+    model_id=$(echo "$info" | grep "ID_MODEL_ID" | sed 's/ID_MODEL_ID=//g')
+
+    while IFS= read -r line; do
+        read -r vid pid label <<< $(echo "$line" | tr ':' ' ')
+        [ "$vid" = "$vendor_id" ] && [ "$pid" = "$model_id" ] && echo "$label"
+    done < $2
+
+    exit 0
+}
+
+# @brief Return vendor and model information for a /dev/* device
+#
+# $1: device path (/dev/*)
+find_dev() {
+    local opt
+    OPTIND=1
+    while getopts "g:" opt; do
+        case "$opt" in
+            g) storage_file="$OPTARG";;
+            *) ;;
+        esac
+    done
+    shift $((OPTIND - 1))
+
+    info=$(udevadm info -q property --property=ID_VENDOR_ID,ID_MODEL_ID,ID_VENDOR_FROM_DATABASE,ID_MODEL_FROM_DATABASE -n $1)
+
+    vendor_id=$(echo "$info" | grep "ID_VENDOR_ID" | sed 's/ID_VENDOR_ID=//g')
+    model_id=$(echo "$info" | grep "ID_MODEL_ID" | sed 's/ID_MODEL_ID=//g')
+    vendor=$(echo "$info" | grep "ID_VENDOR_FROM_DATABASE" | sed 's/ID_VENDOR_FROM_DATABASE=//g')
+    model=$(echo "$info" | grep "ID_MODEL_FROM_DATABASE" | sed 's/ID_MODEL_FROM_DATABASE=//g')
+
+    echo "Information found for $1:"
+    echo "- Vendor: (${vendor_id:-xxxx}) ${vendor:-UNKNOWN}"
+    echo "- Model: (${model_id:-xxxx}) ${model:-UNKNOWN}"
+    [ ! -z "$storage_file" ] && echo "- Guess: $(guess_dev $1 $storage_file)"
+
+    exit 0
+}
+
+while getopts "agrs:" opt; do
+    case "$opt" in
+        a) all=true ;;
+        g) guess=true ;;
+        s) store=true; label=$OPTARG ;;
+        r) remove=true ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [ ! -z "$1" ]; then
+    [ $all ] && find_dev -g "$DEFAULT_STORAGE_FILE" "$1" && exit 0
+    [ $guess ] && guess_dev "$1" "$DEFAULT_STORAGE_FILE" && exit 0
+    [ $store ] && store_dev "$1" "$label" "$DEFAULT_STORAGE_FILE" && exit 0
+    [ $remove ] && delete_dev "$1" "$DEFAULT_STORAGE_FILE" && exit 0
+    find_dev $1 && exit 0
+else
+    usage && exit 1
+fi

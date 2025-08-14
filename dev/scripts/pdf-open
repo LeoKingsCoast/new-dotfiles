@@ -17,7 +17,7 @@ ${HOME}/Documents/datasheets
 ${HOME}/Documents/Livros\
 "
 
-sources=$(find $src_dirs -maxdepth 2 -name "*.pdf")
+sources=$(find $src_dirs -maxdepth 4 -name "*.pdf")
 
 selected=$(echo "$sources" | dmenu -i -l 5 -p "Select a file to open: ") || exit 0
 

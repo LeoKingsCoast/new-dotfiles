@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+bookmarks_dir="${HOME}/.bookmarks"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+add_bookmark() {
+    url="$1"
+    subdir="$2"
+
+    destination_dir="${bookmarks_dir}"
+    if [ "${subdir}" ]; then 
+        destination_dir+="/${subdir}"
+    fi
+
+    if [ ! -e "${destination_dir}" ]; then
+        mkdir -p "${destination_dir}"
+    fi
+    
+    title=$(curl -s "$url" | grep -o "<title>.*</title>" | sed 's/<\/\?title>//g')
+
+    if [ -e "${destination_dir}/${title}" ]; then
+        printf "${RED}This bookmark already exists${NC}\n"
+        return -1
+    fi
+
+    echo "$url" > "${destination_dir}/${title}"
+
+    message="${GREEN}Created bookmark for:${NC} ${title}"
+    if [ "${subdir}" ]; then 
+        message+=" under ${subdir}"
+    fi
+    printf "$message\n"
+}
+
+copy_bookmark() {
+    subdir="$1"
+
+    destination_dir="${bookmarks_dir}"
+    if [ "${subdir}" ]; then 
+        destination_dir+="/${subdir}"
+        file=$(find "$destination_dir" -type f | fzf)
+    else
+        file=$(find "$destination_dir" -maxdepth 3 -type f | fzf)
+    fi
+
+    [ "$file" ] && echo "$(basename "$file")"
+    [ "$file" ] && xclip -selection clipboard "${file}"
+}
+
+show_tree() {
+    subdir="$1"
+
+    destination_dir="${bookmarks_dir}"
+    if [ "${subdir}" ]; then 
+        destination_dir+="/${subdir}"
+    fi
+
+    tree "${destination_dir}"
+}
+
+subdir=""
+
+while getopts "tcd:" opt; do
+    case "$opt" in
+        t) tree=true ;;
+        c) copy=true ;;
+        d) subdir=$OPTARG ;;
+        *) ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [ $tree ]; then
+    show_tree "$subdir"
+    exit 0
+fi
+
+if [ $copy ]; then
+    copy_bookmark "$subdir"
+    exit 0
+fi
+
+url="$1"
+
+add_bookmark "$1" "$subdir"

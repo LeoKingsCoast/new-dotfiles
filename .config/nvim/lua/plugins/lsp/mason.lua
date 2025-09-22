@@ -17,8 +17,9 @@ return {
           "clangd",
           "marksman",
           "ts_ls",
+          "eslint", -- Javascript / Typescript linting
           "html",
-          "emmet_ls",
+          "emmet_ls", -- HTML snippets
           "pyright",
           "autotools_ls",
           "arduino_language_server"

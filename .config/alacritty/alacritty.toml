@@ -5,4 +5,4 @@ opacity = 0.95
 blur = true
 
 [font.normal]
-family = "ComicShannsMono Nerd Font"
+family = "my-chosen-font-family"

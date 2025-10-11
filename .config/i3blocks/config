@@ -41,6 +41,19 @@ separator_block_width=15
 # The second parameter overrides the mixer selection
 # See the script for details.
 
+[task]
+command=$SCRIPT_DIR/task/task
+label= 
+separator=false
+interval=once
+signal=13
+color=#04d1f9
+border=#04d1f9
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
 [hostname]
 command=cat /proc/sys/kernel/hostname
 label=󰣇 

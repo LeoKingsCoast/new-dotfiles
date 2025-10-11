@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+TASKFILE=/tmp/curtask
+I3BLOCKS_SIGNAL=13
+
+CATEGORIES=(
+    "STUDY"
+    "PROGRAMMING"
+    "IMMERSION"
+    "MUSIC"
+    "GUITAR"
+    "CONFIG"
+    "GAMING"
+    "MOVIES"
+    "TROUBLE"
+    "WASTED"
+    "STOP"
+)
+
+
+selected="$(printf "%s\n" "${CATEGORIES[@]}" | dmenu -i -l 10)"
+
+if [[ -z "$selected" ]]; then
+    exit 1
+fi
+
+if [[ "$selected" == "STOP" ]]; then
+    timew stop
+    tmux set -g status-right ""
+    rm "$TASKFILE" && pkill -SIGRTMIN+$I3BLOCKS_SIGNAL i3blocks
+    notify-send "Task" "Stopped doing task"
+else
+    timew start "$selected"
+    tmux set -g status-right "$selected"
+    [[ ! -e "$TASKFILE" ]] && touch "$TASKFILE"
+    echo "$selected" > "$TASKFILE" && pkill -SIGRTMIN+$I3BLOCKS_SIGNAL i3blocks
+    notify-send "Task" "Started task: $selected"
+fi

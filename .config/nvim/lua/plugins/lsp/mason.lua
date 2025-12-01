@@ -16,6 +16,7 @@ return {
           "rust_analyzer",
           "clangd",
           "marksman",
+          "texlab",
           "ts_ls",
           "eslint", -- Javascript / Typescript linting
           "html",

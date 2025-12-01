@@ -97,8 +97,8 @@ function icu ()
 
 function oo ()
 {
-  cd ~/sync-folder/obsidian
-  nvim "Main Page.md"
+  cd ~/vault
+  nvim "main-page.md"
 }
 
 # Purification

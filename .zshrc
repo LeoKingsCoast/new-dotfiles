@@ -68,8 +68,8 @@ alias ls='ls -X --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 alias dtf='cd ~/dotfiles'
-alias screenhome='xrandr --output HDMI-1 --auto --right-of eDP-1'
-alias screenleave='xrandr --output HDMI-1 --off'
+alias screenhome='xrandr --output HDMI-1-0 --auto --right-of eDP-1'
+alias screenleave='xrandr --output HDMI-1-0 --off'
 alias fetch-spice='kicad-cli sch export netlist --format spice'
 
 # Prompt style

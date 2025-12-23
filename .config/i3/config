@@ -254,8 +254,8 @@ bindsym $mod+x move workspace to output next
 # Set to 0 to eliminate borders
 for_window [class="^.*"] border pixel 3
 
-# gaps inner 5px
-# gaps outer 5px
+gaps inner 5px
+gaps outer 5px
 
 #exec --no-startup-id nitrogen --restore
 # exec --no-startup-id picom

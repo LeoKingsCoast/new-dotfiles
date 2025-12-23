@@ -1,5 +1,3 @@
 return {
-    {
-        dir = "~/dev/projects/lua/neovim/tasks.nvim",
-    }
+    "LeoKingsCoast/tasks.nvim"
 }

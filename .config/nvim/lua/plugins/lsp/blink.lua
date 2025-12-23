@@ -8,6 +8,7 @@ return {
     "moyiz/blink-emoji.nvim",
     'rafamadriz/friendly-snippets'
   },
+  build = 'cargo build --release',
   opts = function(_, opts)
     -- UNCOMMENT THIS IF TELESCOPE GETS SLOW
     opts.enabled = function()

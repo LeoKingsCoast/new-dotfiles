@@ -149,11 +149,19 @@ border_left=0
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[cpu_usage]
-command=$SCRIPT_DIR/cpu_usage/cpu_usage
-label= 
-interval=5
-min_width= 100.00%
+[cpu_usage2]
+command=$SCRIPT_DIR/cpu_usage2/cpu_usage2
+# interval=5
+# min_width= 100.00%
+#
+markup=pango
+interval=persist
+LABEL= 
+min_width=CPU 100.00%
+#REFRESH_TIME=1
+WARN_PERCENT=50
+CRIT_PERCENT=80
+#DECIMALS=2
 color=#f1fc79
 border=#f1fc79
 border_top=1

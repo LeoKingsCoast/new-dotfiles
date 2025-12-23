@@ -2,15 +2,17 @@ return{
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      local custom_theme = require('lualine.themes.eldritch');
-      local colors = require("my-functions.colors")
-      custom_theme.normal.b.bg = colors["black_var1"];
-      custom_theme.normal.c.bg = colors["black_var1"];
-      custom_theme.insert.b.bg = colors["black_var1"];
-      custom_theme.visual.b.bg = colors["black_var1"];
-      custom_theme.replace.b.bg = colors["black_var1"];
-      custom_theme.command.b.bg = colors["black_var1"]
-      custom_theme.terminal.b.bg = colors["black_var1"]
+
+      -- Does not work for some reason, investigate later
+      -- local custom_theme = require('lualine.themes.pywal');
+      -- local colors = require("my-functions.colors");
+      -- custom_theme.normal.b.bg = colors["black_var1"];
+      -- custom_theme.normal.c.bg = colors["black_var1"];
+      -- custom_theme.insert.b.bg = colors["black_var1"];
+      -- custom_theme.visual.b.bg = colors["black_var1"];
+      -- custom_theme.replace.b.bg = colors["black_var1"];
+      -- custom_theme.command.b.bg = colors["black_var1"]
+      -- custom_theme.terminal.b.bg = colors["black_var1"]
 
       require('lualine').setup({
       options = {

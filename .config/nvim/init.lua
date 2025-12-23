@@ -4,8 +4,8 @@ require("nvim_config")
 -- come before nvim_keymaps and nvim_extras, because they use the <leader>
 -- keymap
 require("config.lazy")
-require("my-functions.load_colorscheme")()
 
 require("nvim_keymaps")
 require("nvim_extras")
 
+-- vim.cmd('colorscheme wal')

@@ -190,6 +190,7 @@ set_from_resource $focused-bg-color         i3wm.color5
 set_from_resource $bg-color                 i3wm.color0
 set_from_resource $inactive-bg-color        i3wm.color0
 set_from_resource $text-color               i3wm.color10
+set_from_resource $active-text-color        i3wm.color0
 set_from_resource $bar-inactive-text-color  i3wm.color7
 set $urgent-bg-color     #f16c75
 
@@ -202,33 +203,33 @@ set $bar-urgent-bg-color     #f16c75
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $text-color         $focused-bg-color        $text-color    #a48cf2
+client.focused          $text-color         $focused-bg-color  $active-text-color   #a48cf2
 client.unfocused        $bg-color           $bg-color          $inactive-text-color #37f499
 client.focused_inactive $bg-color           $bg-color          $inactive-text-color $inactive-text-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #37f499
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-
-  colors {
-    background $bg-color
-      separator #757575
-      #                  border                 background             text
-      focused_workspace  $bar-focused-bg-color  $bar-focused-bg-color  $bar-focused-text-color
-      inactive_workspace $bar-bg-color          $bar-bg-color          $bar-text-color
-      urgent_workspace   $bar-urgent-bg-color   $bar-urgent-bg-color   #ebfafa
-  }
-		#   status_command /home/leore/.config/i3/bumblebee-status/bumblebee-status \
-		# -m hostname cpu memory battery date time \
-		# -p time.format="%H:%M T %V° " date.format="%a, %b %d %Y" memory.format="{percent:05.02f}%" \
-		# -t dracula-powerline
-
-    position top
-    #status_command i3status
-    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
-    separator_symbol " "
-}
+# bar {
+#
+#   colors {
+#     background $bg-color
+#       separator #757575
+#       #                  border                 background             text
+#       focused_workspace  $bar-focused-bg-color  $bar-focused-bg-color  $bar-focused-text-color
+#       inactive_workspace $bar-bg-color          $bar-bg-color          $bar-text-color
+#       urgent_workspace   $bar-urgent-bg-color   $bar-urgent-bg-color   #ebfafa
+#   }
+# 		#   status_command /home/leore/.config/i3/bumblebee-status/bumblebee-status \
+# 		# -m hostname cpu memory battery date time \
+# 		# -p time.format="%H:%M T %V° " date.format="%a, %b %d %Y" memory.format="{percent:05.02f}%" \
+# 		# -t dracula-powerline
+#
+#     position top
+#     #status_command i3status
+#     # status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
+#     separator_symbol " "
+# }
 
 set_from_resource $bg i3wm.color13
 set_from_resource $fg i3wm.color0
@@ -256,6 +257,9 @@ for_window [class="^.*"] border pixel 3
 
 gaps inner 5px
 gaps outer 5px
+gaps top   0px
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #exec --no-startup-id nitrogen --restore
 # exec --no-startup-id picom

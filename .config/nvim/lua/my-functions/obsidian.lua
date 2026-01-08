@@ -1,7 +1,7 @@
 local M = {}
 
 -- Configuration
-local vault_location = "vault" -- Vault path relative to $HOME directory
+local vault_location = "sync/vault" -- Vault path relative to $HOME directory
 
 -- Optional, customize how note IDs are generated given an optional title.
 ---@param title string|?

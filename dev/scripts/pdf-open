@@ -13,8 +13,8 @@ reader="$1"
 
 src_dirs="\
 ${HOME}/sync-folder/books
-${HOME}/Documents/datasheets
-${HOME}/Documents/Livros\
+${HOME}/documents/datasheets
+${HOME}/documents/books\
 "
 
 sources=$(find $src_dirs -maxdepth 4 -name "*.pdf")

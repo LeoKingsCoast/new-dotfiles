@@ -97,7 +97,7 @@ function icu ()
 
 function oo ()
 {
-  cd ~/vault
+  cd ~/sync/vault
   nvim "main-page.md"
 }
 

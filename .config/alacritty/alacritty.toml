@@ -2,8 +2,9 @@
 general.import = ["~/.cache/wal/colors-alacritty.toml"]
 
 [window]
-opacity = 0.95
-blur = true
+opacity = 0.85
+blur = true # works only on macOS/KDE Wayland
+
 
 [font.normal]
 family = "my-chosen-font-family"

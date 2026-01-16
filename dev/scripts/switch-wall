@@ -17,3 +17,10 @@ echo "${files[$file_random_id]}"
 
 wal -n --saturate 1.2 --contrast 1.1 --cols16 -a 92 -i "${files[$file_random_id]}"
 feh --bg-scale "${files[$file_random_id]}"
+
+# set dunstrc symlink if it's not configured yet
+[ -f "${HOME}/.config/dunst/dunstrc" ] || ln -s ${HOME}/.cache/wal/colors-pywal-dunstrc ${HOME}/.config/dunst/dunstrc
+
+if pgrep -x 'dunst'; then
+    pkill dunst && setsid dunst >/dev/null 2>&1 &
+fi

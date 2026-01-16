@@ -193,6 +193,7 @@ set_from_resource $bg-color                 i3wm.color0
 set_from_resource $inactive-bg-color        i3wm.color0
 set_from_resource $text-color               i3wm.color10
 set_from_resource $active-text-color        i3wm.color0
+set_from_resource $inactive-text-color      i3wm.color7
 set_from_resource $bar-inactive-text-color  i3wm.color7
 set $urgent-bg-color     #f16c75
 

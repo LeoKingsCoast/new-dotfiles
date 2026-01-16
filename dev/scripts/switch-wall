@@ -15,5 +15,5 @@ echo "${files[$file_random_id]}"
 # nitrogen --head=0 --set-scaled "${files[$file_random_id]}"
 # nitrogen --head=1 --set-scaled "${files[$file_random_id]}"
 
-wal -n --cols16 -a 92 -i "${files[$file_random_id]}"
+wal -n --saturate 1.2 --contrast 1.1 --cols16 -a 92 -i "${files[$file_random_id]}"
 feh --bg-scale "${files[$file_random_id]}"

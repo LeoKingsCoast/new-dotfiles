@@ -162,6 +162,45 @@ local function create_daily_note(date_line)
   end
 end
 
+M.markdown_link = function (str, link)
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  -- yank visual selection into register z (runs while selection is active)
+  vim.cmd('normal! "zy')
+
+  -- get the selected text from register z
+  local text = vim.fn.getreg('z')
+  text = text:gsub('\n+$', '')      -- trim trailing newlines
+  text = text:gsub('%]', '\\]')     -- escape closing bracket in text
+
+  local url = vim.fn.getreg('+')
+  if url == '' then
+    url = vim.fn.getreg('"')
+  end
+
+  url = url:gsub('%s+$', '') -- trim trailing newlines/spaces
+
+  if url:find('%s') then
+    url = '<' .. url .. '>'
+  end
+
+  local visual = {
+    start_pos = vim.fn.getpos("'<"),
+    end_pos = vim.fn.getpos("'>"),
+  }
+
+  local position = {
+    start_row = visual.start_pos[2] - 1,
+    start_col = visual.start_pos[3] - 1,
+    end_row = visual.end_pos[2] - 1,
+    end_col = visual.end_pos[3],
+  }
+
+  local replacement = string.format("[%s](%s)", text, url)
+
+  vim.api.nvim_buf_set_text(bufnr, position.start_row, position.start_col, position.end_row, position.end_col, { replacement })
+end
+
 -- Function to switch to the daily note or create it if it does not exist
 -- Example:
 --  switch_to_daily_note("25-05-18-Sun")

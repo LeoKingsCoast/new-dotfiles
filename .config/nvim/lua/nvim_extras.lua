@@ -12,3 +12,5 @@ vim.keymap.set("n", "<leader>on", function ()
   obsidian.create_note(input)
 end, { desc = "Create New Note"} )
 
+-- Create markdown links from clipboard
+vim.keymap.set("v", "<leader>ol", obsidian.markdown_link, { desc = "Create link on selection" })

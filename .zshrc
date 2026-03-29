@@ -101,6 +101,21 @@ function oo ()
   nvim "main-page.md"
 }
 
+# Exit nvim on the same directory where it was, assuming nvim wrote the cwd
+# in $HOME/.cache/nvim_last_cwd
+nvim() {
+    command nvim "$@"
+    local cache="${XDG_CACHE_HOME:-$HOME/.cache}"
+    local f="$cache/nvim_last_cwd"
+    if [[ -f $f ]]; then
+        local dir
+        dir=$(<"$f")
+        if [[ -d $dir ]]; then
+            cd -- "$dir"
+        fi
+    fi
+}
+
 # Purification
 # by Matthieu Cneude
 # https://github.com/Phantas0s/purification

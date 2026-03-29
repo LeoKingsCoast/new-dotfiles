@@ -1,5 +1,11 @@
 #!/bin/bash
-rm /tmp/screenshot.png
-scrot /tmp/screenshot.png
-convert /tmp/screenshot.png -blur 0x20 /tmp/screenshotblur.png
-i3lock -i /tmp/screenshotblur.png
+
+TMP_IMG_FILE=/tmp/screenshot.png
+TMP_IMG_BLURRED_FILE=/tmp/screenshotblur.png
+
+[[ -e "$TMP_IMG_FILE" ]] && rm "$TMP_IMG_FILE"
+
+scrot "$TMP_IMG_FILE"
+magick "$TMP_IMG_FILE" -blur 0x20 "$TMP_IMG_FILE"
+
+i3lock -i "$TMP_IMG_FILE" && rm "$TMP_IMG_FILE"

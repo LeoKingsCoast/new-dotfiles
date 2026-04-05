@@ -123,7 +123,7 @@ base_packages() {
     package_list=(
         vim man-db networkmanager network-manager-applet git htop
         bash-completion firefox xorg xorg-xinit picom i3 alacritty tmux stow
-        wget unzip
+        wget unzip feh dmenu
     )
 
     echo "Pakcage list: ${package_list[@]}"
@@ -158,14 +158,33 @@ audio() {
 }
 
 fonts() {
+    dependencies=(
+        unzip
+        wget
+    )
+
     package_list=(
         noto-fonts-emoji
     )
+    
+    font_url='https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FantasqueSansMono.zip'
+    font_name='FantasqueSansMono'
 
     echo "Pakcage list: ${package_list[@]}"
 
     if confirm "Install font packages?"; then
         pkg_install "${package_list[@]}"
+
+        info "Changing to ${HOME}/.fonts"
+        mkdir -p "${HOME}/.fonts" && cd "${HOME}/.fonts"
+
+        if [[ ! -d "${font_name}" ]]; then
+            info "Downloading and extracting ${font_name}..."
+            wget "$font_url" -O "${font_name}.zip"
+            unzip "${font_name}.zip" -d "$font_name" && rm -rf "${font_name}.zip"
+        else
+            info "${font_name} is already installed. Skipping..."
+        fi
     fi
 }
 
@@ -236,6 +255,10 @@ tools() {
 }
 
 aur() {
+    dependencies=(
+        git
+    )
+
     if ! is_installed git; then
         error "git is not installed. Run 'setup base_packages' first."
         return -1
@@ -288,19 +311,47 @@ japanese() {
     yay -S ibus-mozc
 }
 
-adjustments() {
+workflow() {
+    dependencies=(
+        yay
+        git
+    )
+
     # Writes X11 keyboard configuration at /etc/X11/xorg.conf.d/00-keyboard.conf
     localectl set-x11-keymap br
 
-    # git clone "https://github.com/vivien/i3blocks-contrib" ${HOME}/dotfiles/.config/i3blocks/scripts
+    package_list=(
+        tmux zsh
+    )
 
-    ZSH_PLUGINS_DIR=${HOME}/.config/zsh
-    mkdir -p ${ZSH_PLUGINS_DIR}
-    git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" ${ZSH_PLUGINS_DIR}/zsh-syntax-highlighting
-    git clone "https://github.com/zsh-users/zsh-autosuggestions.git" ${ZSH_PLUGINS_DIR}/zsh-autosuggestions
-    git clone "https://github.com/zsh-users/zsh-completions" ${ZSH_PLUGINS_DIR}/zsh-completions
+    echo "Pakcage list: ${package_list[@]}"
 
-    echo 'export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"' >> ${HOME}/.zshenv
+    if confirm "Install base packages?"; then
+        pkg_install "${package_list[@]}"
+
+        # git clone "https://github.com/vivien/i3blocks-contrib" ${HOME}/dotfiles/.config/i3blocks/scripts
+
+        info "Installing zsh plugins"
+        ZSH_PLUGINS_DIR=${HOME}/.config/zsh
+        mkdir -p ${ZSH_PLUGINS_DIR}
+        git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" ${ZSH_PLUGINS_DIR}/zsh-syntax-highlighting
+        git clone "https://github.com/zsh-users/zsh-autosuggestions.git" ${ZSH_PLUGINS_DIR}/zsh-autosuggestions
+        git clone "https://github.com/zsh-users/zsh-completions" ${ZSH_PLUGINS_DIR}/zsh-completions
+
+        info "Installing Tmux Plugin Manager (TPM)..."
+        mkdir -p "${HOME}/dotfiles/.config/tmux/plugins"
+        git clone "https://github.com/tmux-plugins/tpm.git" "${HOME}/dotfiles/.config/tmux/plugins/tpm"
+        info "TPM Installed! Run Ctrl+<leader> inside tmux to install plugins."
+        info "Note: TPM will install plugins inside .config/tmux/plugins"
+
+        info "Installing pywal16..."
+        yay -S python-pywal16
+
+        info "Installing browser"
+        yay -S brave-bin
+
+        echo 'export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"' >> ${HOME}/.zshenv
+    fi
 }
 
 installation_func() {

@@ -1,7 +1,7 @@
 local M = {}
 
 -- Configuration
-local vault_location = "sync/vault" -- Vault path relative to $HOME directory
+local vault_location = os.getenv("VAULT_DIR") or "documents/vault" -- Vault path relative to $HOME directory
 
 -- Optional, customize how note IDs are generated given an optional title.
 ---@param title string|?
@@ -66,7 +66,7 @@ end
 M.create_note = function (name)
   local id = create_note_id(name)
   local file_name = create_note_file_name(id)
-  local destination_path = string.format("%s/%s/%s", os.getenv("HOME"), vault_location, file_name)
+  local destination_path = string.format("%s/%s", vault_location, file_name)
   local note_dir = destination_path:match("(.*/)") -- Extract directory path from full path
   -- Ensure the directory exists
   vim.fn.mkdir(note_dir, "p")
@@ -93,7 +93,6 @@ end
 
 -- parse date line and generate file path components for the daily note
 local function parse_date_line(date_line)
-  local home = os.getenv("HOME")
   local year, month, day, weekday = date_line:match("(%d+)%-(%d+)%-(%d+)%-(%w+)")
   if not (year and month and day and weekday) then
     print("No valid date found in the line")
@@ -101,7 +100,7 @@ local function parse_date_line(date_line)
   end
   -- month abbreviation
   local title = os.date("%d of %B, %Y", os.time({ year = year + 2000, month = month, day = day }))
-  local note_dir = string.format("%s/%s/dailies", home, vault_location)
+  local note_dir = string.format("%s/dailies", vault_location)
   local note_name = string.format("%s-%s-%s-%s.md", year, month, day, weekday)
   return note_dir, note_name, title
 end

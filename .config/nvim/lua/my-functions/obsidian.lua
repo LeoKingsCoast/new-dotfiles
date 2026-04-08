@@ -2,94 +2,71 @@ local M = {}
 
 -- Configuration
 local vault_location = os.getenv("VAULT_DIR") or "documents/vault" -- Vault path relative to $HOME directory
+local notes_dir = os.getenv("NOTES_DIR") or (vault_location .. "/notes")
 
 -- Optional, customize how note IDs are generated given an optional title.
 ---@param title string|?
 ---@return string
-local create_note_id = function(title)
+local create_note_name = function(title)
   -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
   -- In this case a note with the title 'My new note' will be given an ID that looks
   -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-  local id
+
+  local file_name
   if title ~= nil then
     -- If title is given, transform it into valid file name.
-    id = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+    file_name = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
   else
     -- If title is nil, just add 4 random uppercase letters to the suffix.
     for _ = 1, 4 do
-      id = string.char(math.random(65, 90))
+      file_name = string.char(math.random(65, 90))
     end
   end
-  return id .. "-" .. os.date("%y%m%d")
-end
-
--- print(create_note_id("My cool Note"))
-
--- Optional, customize how note file names are generated given the ID, target directory, and title.
----@param id string?
----@return string
-local create_note_file_name = function(id)
-  -- This is equivalent to the default behavior.
-  local file_name = id
   return file_name .. ".md"
 end
 
 ---@param destructive? boolean
-local fill_with_template = function (title, id, destructive)
+local fill_with_template = function (title, destructive)
   local cur_line = vim.api.nvim_buf_line_count(0)
   if destructive then
     cur_line = 0
   end
 
-  -- local ok, lines = pcall(vim.fn.readfile, template_path)
-  -- if not ok then
-  --   vim.notify("Failed to read template: " .. template_path, vim.log.levels.ERROR)
-  --   return
-  -- end
-
   local lines = {
     "---",
-    "id: " .. id,
-    "alisases: " .. title,
-    "tags: ",
+    "title: " .. title,
     "---",
     "",
     "# " .. title,
   }
 
-  -- local lines = vim.api.nvim_buf_get_lines(template_path, 0, -1, false)
   vim.api.nvim_buf_set_lines(0, cur_line, -1, false, lines)
 end
 
-
-
 M.create_note = function (name)
-  local id = create_note_id(name)
-  local file_name = create_note_file_name(id)
-  local destination_path = string.format("%s/%s", vault_location, file_name)
-  local note_dir = destination_path:match("(.*/)") -- Extract directory path from full path
+  local file_name = create_note_name(name)
+  local file_path = string.format("%s/%s", notes_dir, file_name)
+
   -- Ensure the directory exists
-  vim.fn.mkdir(note_dir, "p")
+  vim.fn.mkdir(notes_dir, "p")
+
   -- Check if the file exists and create it if it doesn't
-  if vim.fn.filereadable(destination_path) == 0 then
-    local file = io.open(destination_path, "w")
+  if vim.fn.filereadable(file_path) == 0 then
+    local file = io.open(file_path, "w")
     if file then
-      vim.cmd("edit " .. vim.fn.fnameescape(destination_path))
-      fill_with_template(name, id, true)
+      vim.cmd("edit " .. vim.fn.fnameescape(file_path))
+      fill_with_template(name, true)
       vim.api.nvim_echo({
         { "CREATED NOTE\n", "WarningMsg" },
-        { destination_path, "WarningMsg" },
+        { file_path, "WarningMsg" },
       }, false, {})
     else
-      print("Failed to create file: " .. destination_path)
+      print("Failed to create file: " .. file_path)
     end
   else
-    print("File already exists: " .. destination_path)
+    print("File already exists: " .. file_path)
   end
 end
-
--- create_note_from_template("foo", "lua/my-functions/templates.lua")
-
 
 -- parse date line and generate file path components for the daily note
 local function parse_date_line(date_line)

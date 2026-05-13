@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# xrandr --setprovideroutputsource modesetting NVIDIA-0
-# xrandr --auto
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -60,4 +60,5 @@ fi
 picom &
 setxkbmap br &
 setxkbmap -option "caps:ctrl_shifted_capslock" &
+xset r rate 250 25 &
 exec i3

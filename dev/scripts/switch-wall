@@ -1,22 +1,19 @@
 #!/usr/bin/env bash
 
-wpaper_folder=($HOME/Pictures/wallpapers)
+CHOSEN_WPAPER="$1"
 
-files=($wpaper_folder/*)
 
-# echo "${files[0]}"
-# echo "${files[1]}"
-# echo "${#files[@]}"
+if [[ ! -e "$CHOSEN_WPAPER" ]]; then
+    wpaper_folder=($HOME/Pictures/wallpapers)
+    files=($wpaper_folder/*)
 
-let file_random_id=${RANDOM}%${#files[@]}
+    let file_random_id=${RANDOM}%${#files[@]}
+    CHOSEN_WPAPER=${files[$file_random_id]}
+    echo "$CHOSEN_WPAPER"
+fi
 
-echo "${files[$file_random_id]}"
-
-# nitrogen --head=0 --set-scaled "${files[$file_random_id]}"
-# nitrogen --head=1 --set-scaled "${files[$file_random_id]}"
-
-wal -n --saturate 1.2 --contrast 1.1 --cols16 -a 92 -i "${files[$file_random_id]}"
-feh --bg-scale "${files[$file_random_id]}"
+wal -n --saturate 1.2 --contrast 1.1 --cols16 -a 92 -i "$CHOSEN_WPAPER"
+feh --bg-scale "$CHOSEN_WPAPER"
 
 # set dunstrc symlink if it's not configured yet
 [ -f "${HOME}/.config/dunst/dunstrc" ] || ln -s ${HOME}/.cache/wal/colors-pywal-dunstrc ${HOME}/.config/dunst/dunstrc

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+PROJECT_NAME="$(basename $(pwd))"
+
+SESSION_NAME="$PROJECT_NAME"
+MAIN_WINDOW="editor"
+BUILD_WINDOW="build"
+DEBUG_WINDOW="debug"
+
+BUILD_SOCKET="build-socket-$PROJECT_NAME"
+BUILD_SESSION="build-session"
+
+tmux rename-session "$SESSION_NAME"
+tmux rename-window "$MAIN_WINDOW"
+
+# C-m sends the 'Enter' key signal here
+tmux send-keys -t "$SESSION_NAME" "$EDITOR ." C-m
+tmux split-window -v -l 30% -t $SESSION_NAME
+tmux new-window -t $SESSION_NAME -n "$BUILD_WINDOW"
+
+# Create a nested tmux session inside the build window and pane.
+# Kill the build session if any existed for that project already.
+tmux -L "$BUILD_SOCKET" has-session -t "${BUILD_SESSION}" && tmux -L "$BUILD_SOCKET" kill-session -t "$BUILD_SESSION"
+tmux send-keys -t $SESSION_NAME:1.1 "tmux -L ${BUILD_SOCKET} new-session -A -s ${BUILD_SESSION}" C-m && \
+tmux send-keys -t $SESSION_NAME:2 "tmux -L ${BUILD_SOCKET} attach -t ${BUILD_SESSION}" C-m
+
+if [ -n "$TMUX" ]; then
+    tmux switch-client -t "$SESSION_NAME:1.0"
+else
+    tmux attach -t "$SESSION_NAME:1.0"
+fi

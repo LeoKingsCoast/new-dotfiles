@@ -1,7 +1,5 @@
 # Created by newuser for 5.9
 
-export VAULT_DIR=${HOME}/sync/vault
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

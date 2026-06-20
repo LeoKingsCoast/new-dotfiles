@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if xset -q | grep -q 'Caps Lock: *on'; then
+    xdotool key Caps_Lock
+fi

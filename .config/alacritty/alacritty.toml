@@ -8,3 +8,9 @@ blur = true # works only on macOS/KDE Wayland
 
 [font.normal]
 family = "my-chosen-font-family"
+
+[keyboard]
+bindings =  [
+    { key = "Escape", command = { program = "/home/leore/dev/scripts/disable-caps" }},
+    { key = "Escape", chars = "\u001b" },
+]

@@ -35,15 +35,8 @@ return {
 			local install_parser_and_enable_features = function(event)
 				local lang = event.match
 
-				-- Try to start the parser install for the language.
-				local ok, task = pcall(ts.install, { lang }, { summary = true })
-				if not ok then return end
-
-				-- Wait for the installation to finish (up to 10 seconds).
-				task:wait(10000)
-
 				-- Enable syntax highlighting for the buffer
-				ok, _ = pcall(vim.treesitter.start, event.buf, lang)
+				local ok, _ = pcall(vim.treesitter.start, event.buf, lang)
 				if not ok then return end
 
 				-- Enable other features as needed.

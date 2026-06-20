@@ -11,8 +11,7 @@ end, { desc = "Go to or create daily note" })
 
 
 vim.keymap.set("n", "<leader>on", function ()
-  local input = vim.fn.input("New note title: ")
-  obsidian.create_note(input)
+  obsidian.new_note()
 end, { desc = "Create New Note"} )
 
 

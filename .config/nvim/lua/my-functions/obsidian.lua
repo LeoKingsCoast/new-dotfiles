@@ -222,10 +222,17 @@ local search_note = function (callback)
   })
 end
 
+
 M.open_search_note = function()
   search_note(function (path)
     M.open_note(path)
   end)
+end
+
+
+M.new_note = function ()
+  local input = vim.fn.input("New note title: ")
+  M.create_note(input)
 end
 
 

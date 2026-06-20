@@ -1,3 +1,5 @@
+-- =========================== Obsidian Commands =============================
+
 local obsidian = require("my-functions.obsidian")
 
 -- Keymap to switch to the daily note or create it if it does not exist
@@ -7,13 +9,19 @@ vim.keymap.set("n", "<leader>od", function()
   obsidian.switch_to_daily_note(date_line)
 end, { desc = "Go to or create daily note" })
 
+
 vim.keymap.set("n", "<leader>on", function ()
   local input = vim.fn.input("New note title: ")
   obsidian.create_note(input)
 end, { desc = "Create New Note"} )
 
+
 -- Create markdown links from clipboard
 vim.keymap.set("v", "<leader>ol", obsidian.markdown_link, { desc = "Create link on selection" })
+
+
+-- Search notes
+vim.keymap.set("n", "<space>fob", obsidian.open_search_note, { desc = "Find Obsidian Notes" })
 
 -- =========================== AUTOCOMMANDS ===============================
 

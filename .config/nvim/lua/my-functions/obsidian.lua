@@ -43,6 +43,17 @@ local fill_with_template = function (title, destructive)
   vim.api.nvim_buf_set_lines(0, cur_line, -1, false, lines)
 end
 
+M.open_note = function (note_path)
+  local cwd = vim.fn.getcwd()
+  if cwd == vault_location then
+    vim.cmd("edit " .. vim.fn.fnameescape(note_path))
+  else
+    vim.cmd.vsplit()
+    vim.cmd.wincmd("L")
+    vim.cmd("edit " .. vim.fn.fnameescape(note_path))
+  end
+end
+
 M.create_note = function (name)
   local file_name = create_note_name(name)
   local file_path = string.format("%s/%s", notes_dir, file_name)
@@ -54,7 +65,7 @@ M.create_note = function (name)
   if vim.fn.filereadable(file_path) == 0 then
     local file = io.open(file_path, "w")
     if file then
-      vim.cmd("edit " .. vim.fn.fnameescape(file_path))
+      M.open_note(file_path)
       fill_with_template(name, true)
       vim.api.nvim_echo({
         { "CREATED NOTE\n", "WarningMsg" },
@@ -188,5 +199,34 @@ M.switch_to_daily_note = function(date_line)
   create_daily_note(date_line)
   vim.cmd("edit " .. vim.fn.fnameescape(full_path))
 end
+
+
+local search_note = function (callback)
+  require("telescope.builtin").find_files({
+    cwd = vim.fs.joinpath(notes_dir),
+
+    attach_mappings = function(prompt_bufnr, map)
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
+
+      actions.select_default:replace(function()
+        local entry = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        local path = entry.path or entry[1]
+        callback(path)
+      end)
+
+      return true
+    end,
+  })
+end
+
+M.open_search_note = function()
+  search_note(function (path)
+    M.open_note(path)
+  end)
+end
+
 
 return M

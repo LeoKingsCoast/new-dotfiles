@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ -z "$VAULT_DIR" ]]; then
+    echo "VAULT DIR not defined"
+    exit 1
+fi
+
+tmux split-window -h
+tmux send-keys "cd $VAULT_DIR && nvim" C-m
+tmux send-keys ":lua require(\"my-functions.obsidian\").open_search_note()" C-m

@@ -2,7 +2,6 @@
 .config/i3blocks/scripts
 .config/alacritty/theme.toml
 .config/colorscheme/active-colors
-*.log
 .config/awesome/awesome-wm-widgets
 .config/awesome/lain
 quotes.txt
@@ -10,3 +9,6 @@ quotes.txt
 .config/nvim/lazy-lock.json
 .fonts/
 .config/tmux/plugins
+
+*.log
+*.patch

@@ -90,12 +90,13 @@ return {
       -- Set to `false` to remove a keymap
       -- See :help oil-actions for a list of all available actions
       keymaps = {
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
         ["g?"] = { "actions.show_help", mode = "n" },
         ["<CR>"] = "actions.select",
         ["<C-s>"] = { "actions.select", opts = { vertical = true } },
-        ["<C-d>"] = { "actions.select", opts = { horizontal = true } },
         ["<C-t>"] = { "actions.select", opts = { tab = true } },
-        ["<C-p>"] = "actions.preview",
+        ["<C-p>"] = { "actions.preview", opts = { vertical = true, split = "botright" } },
         ["<C-c>"] = { "actions.close", mode = "n" },
         ["<C-q>"] = "actions.refresh",
         ["-"] = { "actions.parent", mode = "n" },

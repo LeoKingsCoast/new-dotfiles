@@ -23,10 +23,18 @@ mailboxes =INBOX "=[Gmail]/Sent Mail" "=[Gmail]/Trash" "=[Gmail]/Drafts"
 set ssl_force_tls = yes
 
 # Customization
-set sort=reverse-last-date-received
-set strict_threads=yes
 set pager_stop = yes
 set menu_scroll = yes
+set edit_headers = yes
+set charset = UTF-8     # value of $LANG; also fallback for send_charset
+set imap_check_subscribed = yes
+
+# Sort by threads so I can see wtf is going on
+set sort="threads"
+set strict_threads="yes"
+set sort_browser="reverse-date"
+set sort_aux="reverse-last-date-received"
+set collapse_unread="yes"
 
 set index_format = "%4C %Z [%{%d/%m/%y %H:%M}] %-15.15L (%?l?%4l&%4c?) %s"
 
@@ -36,6 +44,10 @@ bind pager \Cd half-down
 bind pager \Cu half-up
 bind index \Cd half-down
 bind index \Cu half-up
+
+# Lets me collapse fucking everything
+bind index = collapse-all
+bind index - collapse-thread
 
 # Sidebar
 set sidebar_visible = yes
